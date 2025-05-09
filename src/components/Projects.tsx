@@ -4,7 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 interface Project {
   title: string;
   description: string;
-  images?: string[];
+  images?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }[];
 }
 
 const projects: Project[] = [
@@ -28,21 +33,96 @@ const projects: Project[] = [
     description:
       "Comprehensive business management solution with inventory, sales, and customer relationship features.",
     images: [
-      "/assets/img/sign-in.jpg",
-      "/assets/img/dashboard-1.jpg",
-      "/assets/img/dashboard-2.jpg",
-      "/assets/img/notifications.jpg",
-      "/assets/img/top-cars.jpg",
-      "/assets/img/car-sales.jpg",
-      "/assets/img/car-dashboard.jpg",
-      "/assets/img/cars.jpg",
-      "/assets/img/tables.jpg",
-      "/assets/img/restaurant.jpg",
-      "/assets/img/orders.jpg",
-      "/assets/img/reservations.jpg",
-      "/assets/img/reservation-2.jpg",
-      "/assets/img/reservation-1.jpg",
-      "/assets/img/settings.jpg",
+      {
+        src: "/assets/img/sign-in.jpg",
+        alt: "Sign In Page",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/dashboard-1.jpg",
+        alt: "Main Dashboard",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/dashboard-2.jpg",
+        alt: "Secondary Dashboard",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/notifications.jpg",
+        alt: "Notifications Panel",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/top-cars.jpg",
+        alt: "Top Cars View",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/car-sales.jpg",
+        alt: "Car Sales Dashboard",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/car-dashboard.jpg",
+        alt: "Car Management Dashboard",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/cars.jpg",
+        alt: "Cars Overview",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/tables.jpg",
+        alt: "Data Tables",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/restaurant.jpg",
+        alt: "Restaurant Management",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/orders.jpg",
+        alt: "Orders Management",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/reservations.jpg",
+        alt: "Reservations System",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/reservation-2.jpg",
+        alt: "Reservation Details",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/reservation-1.jpg",
+        alt: "Reservation Overview",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/settings.jpg",
+        alt: "Settings Panel",
+        width: 1920,
+        height: 1080,
+      },
     ],
   },
   {
@@ -60,6 +140,7 @@ const projects: Project[] = [
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -69,13 +150,30 @@ const Projects = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
+  // Preload next set of images
+  useEffect(() => {
+    const currentProject = projects[currentIndex];
+    if (currentProject.images) {
+      const nextImages = getVisibleImages();
+      nextImages.forEach((image) => {
+        if (!loadedImages.has(image.src)) {
+          const img = new Image();
+          img.src = image.src;
+          img.onload = () => {
+            setLoadedImages((prev) => new Set([...prev, image.src]));
+          };
+        }
+      });
+    }
+  }, [currentIndex, imageIndex]);
+
   // Auto-rotate images if there are more than 3
   useEffect(() => {
     const currentProject = projects[currentIndex];
     if (currentProject.images && currentProject.images.length > 3) {
       const interval = setInterval(() => {
         setImageIndex((prev) => (prev + 1) % currentProject.images!.length);
-      }, 3000); // Change image every 3 seconds
+      }, 3000);
 
       return () => clearInterval(interval);
     }
@@ -88,7 +186,6 @@ const Projects = () => {
     const images = currentProject.images;
     if (images.length <= 3) return images.slice(0, 3);
 
-    // Get 3 consecutive images starting from imageIndex
     return [
       images[imageIndex],
       images[(imageIndex + 1) % images.length],
@@ -127,22 +224,29 @@ const Projects = () => {
                 <div className="relative">
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <AnimatePresence mode="wait">
-                      {getVisibleImages().map((image, index) => (
+                      {getVisibleImages().map((image) => (
                         <motion.div
-                          key={`${image}-${imageIndex}`}
+                          key={`${image.src}-${imageIndex}`}
                           initial={{ opacity: 0, x: 50 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -50 }}
                           transition={{ duration: 0.5 }}
-                          className="relative aspect-video rounded-lg overflow-hidden"
+                          className="relative aspect-video rounded-lg overflow-hidden bg-deep-space/30"
                         >
-                          <img
-                            src={image}
-                            alt={`${projects[currentIndex].title} screenshot ${
-                              index + 1
-                            }`}
-                            className="w-full h-full object-cover"
-                          />
+                          {loadedImages.has(image.src) ? (
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                              width={image.width}
+                              height={image.height}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-8 h-8 border-2 border-electric-blue border-t-transparent rounded-full animate-spin" />
+                            </div>
+                          )}
                         </motion.div>
                       ))}
                     </AnimatePresence>
