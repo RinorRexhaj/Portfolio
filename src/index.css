@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: theme("fontFamily.inter");
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.bg-futuristic {
+  background: linear-gradient(-45deg, #0f0c29, #1a1a40, #302b63, #6a0572);
+  background-size: 400% 400%;
+  animation: gradient-x 15s ease infinite;
+}
