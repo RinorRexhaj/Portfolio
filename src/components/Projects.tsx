@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/Projects";
 import Display from "./Display";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imageIndex, setImageIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -14,53 +12,6 @@ const Projects = () => {
 
   const prevProject = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  useEffect(() => {
-    setImageIndex(0);
-  }, [currentIndex]);
-
-  // Preload next set of images
-  useEffect(() => {
-    const currentProject = projects[currentIndex];
-    if (currentProject.images) {
-      const nextImages = getVisibleImages();
-      nextImages.forEach((image) => {
-        if (!loadedImages.has(image.src)) {
-          const img = new Image();
-          img.src = image.src;
-          img.onload = () => {
-            setLoadedImages((prev) => new Set([...prev, image.src]));
-          };
-        }
-      });
-    }
-  }, [currentIndex, imageIndex]);
-
-  // Auto-rotate images if there are more than 3
-  useEffect(() => {
-    const currentProject = projects[currentIndex];
-    if (currentProject.images && currentProject.images.length > 3) {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % currentProject.images!.length);
-      }, 3000);
-
-      return () => clearInterval(interval);
-    }
-  }, [currentIndex]);
-
-  const getVisibleImages = () => {
-    const currentProject = projects[currentIndex];
-    if (!currentProject.images) return [];
-
-    const images = currentProject.images;
-    if (images.length <= 3) return images.slice(0, 3);
-
-    return [
-      images[imageIndex],
-      images[(imageIndex + 1) % images.length],
-      images[(imageIndex + 2) % images.length],
-    ];
   };
 
   return (
@@ -83,19 +34,14 @@ const Projects = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
-              <h3 className="font-orbitron text-3xl mb-6 text-electric-blue">
+              <h3 className="font-orbitron text-3xl md:text-2xl mb-6 text-electric-blue">
                 {projects[currentIndex].title}
               </h3>
-              <p className="font-spaceGrotesk text-text-secondary text-lg mb-8">
+              <p className="font-spaceGrotesk text-text-secondary text-lg md:text-base mb-8">
                 {projects[currentIndex].description}
               </p>
 
-              <Display
-                currentIndex={currentIndex}
-                imageIndex={imageIndex}
-                loadedImages={loadedImages}
-                setImageIndex={setImageIndex}
-              />
+              <Display currentIndex={currentIndex} />
             </div>
           </motion.div>
         </AnimatePresence>

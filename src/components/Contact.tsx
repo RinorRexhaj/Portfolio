@@ -69,7 +69,7 @@ const Contact = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="grid grid-cols-3 gap-8 md:gap-4 sm:grid-cols-1 flex-wrap">
+        <div className="grid grid-cols-3 gap-8 md:gap-4 sm:grid-cols-2 flex-wrap">
           {contactLinks.map((link) => (
             <motion.a
               key={link.name}

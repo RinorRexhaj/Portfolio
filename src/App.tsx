@@ -62,7 +62,7 @@ const App = () => {
             }}
           >
             <main className="container mx-auto px-4 py-8">
-              <div className="space-y-20">
+              <div className="space-y-20 md:space-y-10">
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,

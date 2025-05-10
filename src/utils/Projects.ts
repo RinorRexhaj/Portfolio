@@ -4,17 +4,137 @@ export const projects: Project[] = [
   {
     title: "UrbanCenter",
     description:
-      "A modern urban planning and management system that helps cities optimize their resources and improve citizen services.",
-  },
-  {
-    title: "PowerDash",
-    description:
-      "Real-time energy monitoring and management dashboard for industrial facilities.",
+      "Modern urban planning and management platform that helps cities optimize citizen services.",
+    images: [
+      {
+        src: "/assets/img/urban-home.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-chat-1.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-chat-2.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-login.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-ride.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-eat-1.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-eat-2.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/urban-payment.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
   {
     title: "Villa Vibes",
     description:
       "Luxury property management system with virtual tours and automated booking.",
+    images: [
+      {
+        src: "/assets/img/villa-home.jpg",
+        alt: "VillaVibes",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/villa-about.jpg",
+        alt: "VillaVibes",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/villa-chat.jpg",
+        alt: "VillaVibes",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/villa-book.jpg",
+        alt: "VillaVibes",
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  },
+  {
+    title: "PowerDash",
+    description:
+      "AI-Powered Data visualization and report generation platform.",
+    images: [
+      {
+        src: "/assets/img/powerdash-init.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-filter.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-search.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-bar.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-ai.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-multi.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/powerdash-report.jpg",
+        alt: "PowerDash",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
   {
     title: "Management System",
@@ -52,36 +172,6 @@ export const projects: Project[] = [
         height: 1080,
       },
       {
-        src: "/assets/img/car-sales.jpg",
-        alt: "Car Sales Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/car-dashboard.jpg",
-        alt: "Car Management Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/cars.jpg",
-        alt: "Cars Overview",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/tables.jpg",
-        alt: "Data Tables",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/restaurant.jpg",
-        alt: "Restaurant Management",
-        width: 1920,
-        height: 1080,
-      },
-      {
         src: "/assets/img/orders.jpg",
         alt: "Orders Management",
         width: 1920,
@@ -94,18 +184,6 @@ export const projects: Project[] = [
         height: 1080,
       },
       {
-        src: "/assets/img/reservation-2.jpg",
-        alt: "Reservation Details",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/reservation-1.jpg",
-        alt: "Reservation Overview",
-        width: 1920,
-        height: 1080,
-      },
-      {
         src: "/assets/img/settings.jpg",
         alt: "Settings Panel",
         width: 1920,
@@ -114,13 +192,100 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "SafeTravels",
-    description:
-      "Travel safety and emergency response system with real-time alerts and location tracking.",
+    title: "DragonBall Destiny",
+    description: "Fast-paced fighting game, battling in Dragon Ball fashion.",
+    images: [
+      {
+        src: "/assets/img/db-first.jpg",
+        alt: "DBDestiny",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/db-second.jpg",
+        alt: "DBDestiny",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/db-jump.jpg",
+        alt: "DBDestiny",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/db-attack.jpg",
+        alt: "DBDestiny",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/db-win.jpg",
+        alt: "DBDestiny",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
   {
     title: "AlgoViz",
     description:
       "Interactive algorithm visualization tool for educational purposes.",
+    images: [
+      {
+        src: "/assets/img/algoviz-init.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-first.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-second.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-third.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-end.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-sort.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-selection.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-insertion.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/algoviz-shell.jpg",
+        alt: "AlgoViz",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
 ];
