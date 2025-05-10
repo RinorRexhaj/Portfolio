@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div
       className={`min-h-screen ${
-        isLoading && "max-h-screen"
+        isLoading && "max-h-screen overflow-hidden"
       } bg-deep-space text-text-primary relative overflow-hidden`}
     >
       {/* Loading Animation */}
@@ -66,9 +66,6 @@ const App = () => {
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,
-                    transform: showContent
-                      ? "translateY(0)"
-                      : "translateY(20px)",
                     transition: "all 0.8s ease-out 0.2s",
                   }}
                   id="about"
@@ -79,9 +76,6 @@ const App = () => {
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,
-                    transform: showContent
-                      ? "translateY(0)"
-                      : "translateY(20px)",
                     transition: "all 0.8s ease-out 0.4s",
                   }}
                   id="projects"
@@ -92,9 +86,6 @@ const App = () => {
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,
-                    transform: showContent
-                      ? "translateY(0)"
-                      : "translateY(20px)",
                     transition: "all 0.8s ease-out 0.6s",
                   }}
                   id="skills"
@@ -106,9 +97,6 @@ const App = () => {
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,
-                    transform: showContent
-                      ? "translateY(0)"
-                      : "translateY(20px)",
                     transition: "all 0.8s ease-out 0.6s",
                   }}
                   id="contact"

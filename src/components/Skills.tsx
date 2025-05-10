@@ -6,6 +6,7 @@ import {
   faAngular,
   faNodeJs,
   faMicrosoft,
+  faPython,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faBrain,
@@ -47,6 +48,12 @@ const skillsData = {
       icon: faMicrosoft,
       description: "Enterprise Solutions",
       color: "#512BD4",
+    },
+    {
+      name: "Flask Python",
+      icon: faPython,
+      description: "Enterprise & AI Solutions",
+      color: "#06B6D4",
     },
   ],
   "AI and Data Science": [

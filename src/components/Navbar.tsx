@@ -1,19 +1,26 @@
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
 const links = ["About", "Projects", "Skills", "Contact"];
 
 const Navbar: React.FC = () => {
-  const [activeLink, setActiveLink] = useState<string>("About");
+  const [activeLink, setActiveLink] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScroll = (id: string) => {
-    const element = document.getElementById(id.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    setTimeout(() => {
+      const element = document.getElementById(id.toLowerCase());
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        setIsMobileMenuOpen(false); // Close mobile menu on click
+      }
+    }, 100);
   };
 
   useEffect(() => {
+    setActiveLink("About");
     const handleScrollEvent = () => {
       let current = "";
       for (const link of links) {
@@ -33,8 +40,9 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener("scroll", handleScrollEvent);
+    handleScrollEvent();
     return () => window.removeEventListener("scroll", handleScrollEvent);
-  }, [activeLink]);
+  }, []);
 
   return (
     <nav
@@ -45,7 +53,8 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="w-11/12 max-w-7xl mx-auto flex items-center justify-between">
-        <h1 className="flex text-3xl font-semibold text-gray-800 overflow-hidden">
+        {/* Brand */}
+        <h1 className="flex text-3xl md:text-2xl font-semibold text-gray-800 overflow-hidden">
           {"Rinor Rexhaj".split("").map((char, index) => (
             <p
               className="animate-textReveal [animation-fill-mode:backwards]"
@@ -56,7 +65,9 @@ const Navbar: React.FC = () => {
             </p>
           ))}
         </h1>
-        <ul className="flex space-x-6 text-gray-700 font-medium">
+
+        {/* Desktop Links */}
+        <ul className="md:hidden flex space-x-6 text-gray-700 font-medium">
           {links.map((link: string, index: number) => (
             <li
               key={link}
@@ -72,7 +83,39 @@ const Navbar: React.FC = () => {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="hidden md:block text-gray-700"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? (
+            <FontAwesomeIcon className="w-7 h-7" icon={faXmark} />
+          ) : (
+            <FontAwesomeIcon className="w-7 h-7" icon={faBars} />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Dropdown */}
+      {isMobileMenuOpen && (
+        <ul className="hidden md:flex mt-4 px-6 py-4  flex-col space-y-4 text-gray-700 font-medium bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade [animation-fill-mode:backwards]">
+          {links.map((link) => (
+            <li
+              key={link}
+              onClick={() => handleScroll(link)}
+              className={`cursor-pointer text-lg ${
+                activeLink === link
+                  ? "text-meta-5 font-semibold"
+                  : "hover:text-meta-5"
+              }`}
+            >
+              {link}
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 };

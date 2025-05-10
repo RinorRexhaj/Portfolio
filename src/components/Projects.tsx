@@ -1,141 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface Project {
-  title: string;
-  description: string;
-  images?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  }[];
-}
-
-const projects: Project[] = [
-  {
-    title: "UrbanCenter",
-    description:
-      "A modern urban planning and management system that helps cities optimize their resources and improve citizen services.",
-  },
-  {
-    title: "PowerDash",
-    description:
-      "Real-time energy monitoring and management dashboard for industrial facilities.",
-  },
-  {
-    title: "Villa Vibes",
-    description:
-      "Luxury property management system with virtual tours and automated booking.",
-  },
-  {
-    title: "Management System",
-    description:
-      "Comprehensive business management solution with inventory, sales, and customer relationship features.",
-    images: [
-      {
-        src: "/assets/img/sign-in.jpg",
-        alt: "Sign In Page",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/dashboard-1.jpg",
-        alt: "Main Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/dashboard-2.jpg",
-        alt: "Secondary Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/notifications.jpg",
-        alt: "Notifications Panel",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/top-cars.jpg",
-        alt: "Top Cars View",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/car-sales.jpg",
-        alt: "Car Sales Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/car-dashboard.jpg",
-        alt: "Car Management Dashboard",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/cars.jpg",
-        alt: "Cars Overview",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/tables.jpg",
-        alt: "Data Tables",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/restaurant.jpg",
-        alt: "Restaurant Management",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/orders.jpg",
-        alt: "Orders Management",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/reservations.jpg",
-        alt: "Reservations System",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/reservation-2.jpg",
-        alt: "Reservation Details",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/reservation-1.jpg",
-        alt: "Reservation Overview",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/settings.jpg",
-        alt: "Settings Panel",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-  },
-  {
-    title: "SafeTravels",
-    description:
-      "Travel safety and emergency response system with real-time alerts and location tracking.",
-  },
-  {
-    title: "AlgoViz",
-    description:
-      "Interactive algorithm visualization tool for educational purposes.",
-  },
-];
+import { projects } from "../utils/Projects";
+import Display from "./Display";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -149,6 +15,10 @@ const Projects = () => {
   const prevProject = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
+
+  useEffect(() => {
+    setImageIndex(0);
+  }, [currentIndex]);
 
   // Preload next set of images
   useEffect(() => {
@@ -220,56 +90,12 @@ const Projects = () => {
                 {projects[currentIndex].description}
               </p>
 
-              {projects[currentIndex].images && (
-                <div className="relative">
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <AnimatePresence mode="wait">
-                      {getVisibleImages().map((image) => (
-                        <motion.div
-                          key={`${image.src}-${imageIndex}`}
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -50 }}
-                          transition={{ duration: 0.5 }}
-                          className="relative aspect-video rounded-lg overflow-hidden bg-deep-space/30"
-                        >
-                          {loadedImages.has(image.src) ? (
-                            <img
-                              src={image.src}
-                              alt={image.alt}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                              width={image.width}
-                              height={image.height}
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-8 h-8 border-2 border-electric-blue border-t-transparent rounded-full animate-spin" />
-                            </div>
-                          )}
-                        </motion.div>
-                      ))}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Image Navigation Dots */}
-                  {projects[currentIndex].images &&
-                    projects[currentIndex].images.length > 3 && (
-                      <div className="flex justify-center gap-2 mt-4">
-                        {projects[currentIndex].images.map((_, index) => (
-                          <div
-                            key={index}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              index === imageIndex
-                                ? "bg-electric-blue scale-125"
-                                : "bg-electric-blue/30"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    )}
-                </div>
-              )}
+              <Display
+                currentIndex={currentIndex}
+                imageIndex={imageIndex}
+                loadedImages={loadedImages}
+                setImageIndex={setImageIndex}
+              />
             </div>
           </motion.div>
         </AnimatePresence>
