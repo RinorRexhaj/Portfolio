@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="hidden md:block text-gray-700"
+          className="hidden md:block text-gray-700 animate-fade [animation-fill-mode:backwards]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Menu"
         >

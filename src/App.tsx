@@ -63,13 +63,7 @@ const App = () => {
           >
             <main className="container mx-auto px-4 py-8">
               <div className="space-y-20 md:space-y-10">
-                <div
-                  style={{
-                    opacity: showContent ? 1 : 0,
-                    transition: "all 0.8s ease-out 0.2s",
-                  }}
-                  id="about"
-                >
+                <div id="about">
                   <HeroSection />
                 </div>
 
@@ -111,8 +105,8 @@ const App = () => {
 
       {/* Background grid pattern */}
       <div
-        className="absolute inset-0 bg-grid-pattern bg-grid opacity-20 transition-opacity duration-1000"
-        style={{ opacity: showContent ? 0.2 : 0 }}
+        className="absolute inset-0 bg-grid-pattern bg-grid opacity-40 transition-opacity duration-1000"
+        style={{ opacity: showContent ? 0.4 : 0 }}
       ></div>
 
       {/* Scan line effect */}

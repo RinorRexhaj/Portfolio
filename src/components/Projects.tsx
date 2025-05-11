@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/Projects";
 import Display from "./Display";
 
+const swipeConfidenceThreshold = 100;
+
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -14,6 +16,14 @@ const Projects = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
+  const handleSwipe = (offsetX: number) => {
+    if (offsetX > swipeConfidenceThreshold) {
+      prevProject();
+    } else if (offsetX < -swipeConfidenceThreshold) {
+      nextProject();
+    }
+  };
+
   return (
     <section className="py-20 w-11/12 mx-auto max-w-7xl">
       <h2 className="font-orbitron text-4xl mb-12 text-center">
@@ -22,9 +32,15 @@ const Projects = () => {
 
       {/* Main Project Display */}
       <div className="relative mb-8">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={currentIndex}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={(event, info) => {
+              event;
+              handleSwipe(info.offset.x);
+            }}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}

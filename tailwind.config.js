@@ -263,6 +263,10 @@ module.exports = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        fadeInSlow: {
+          "0%": { opacity: 0, transform: "translateY(20px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         fadeOut: {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
@@ -389,6 +393,7 @@ module.exports = {
         "spin-3": "spin 3s linear infinite",
         flip: "flip 1s linear",
         fade: "fadeIn 0.3s ease-in-out",
+        "fade-in-slow": "fadeInSlow 1.5s ease-out forwards",
         fadeOut: "fadeOut 0.3s ease-in-out",
         typing: "type 1s infinite",
         sliding: "slide 5s linear",

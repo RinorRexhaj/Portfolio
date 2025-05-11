@@ -117,7 +117,7 @@ const Display: React.FC<DisplayProps> = ({ currentIndex }) => {
                           }, 3000);
                         }
                       }}
-                      className={`relative w-16 h-9 sm:w-8 sm:h-4 overflow-hidden rounded-sm border ${
+                      className={`relative w-16 h-9 sm:w-8 sm:h-6 overflow-hidden rounded-sm border ${
                         idx === imageIndex
                           ? "border-electric-blue"
                           : "border-transparent hover:border-electric-blue/50"

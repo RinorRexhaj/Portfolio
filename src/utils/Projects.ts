@@ -3,8 +3,7 @@ import { Project } from "../types/Project";
 export const projects: Project[] = [
   {
     title: "UrbanCenter",
-    description:
-      "Modern urban planning and management platform that helps cities optimize citizen services.",
+    description: "Modern urban all-in-one city services platform.",
     images: [
       {
         src: "/assets/img/urban-home.jpg",
@@ -58,8 +57,7 @@ export const projects: Project[] = [
   },
   {
     title: "Villa Vibes",
-    description:
-      "Luxury property management system with virtual tours and automated booking.",
+    description: "Luxury villa booking platform with virtual tours.",
     images: [
       {
         src: "/assets/img/villa-home.jpg",
@@ -138,8 +136,7 @@ export const projects: Project[] = [
   },
   {
     title: "Management System",
-    description:
-      "Comprehensive business management solution with inventory, sales, and customer relationship features.",
+    description: "Business management solution with robust features.",
     images: [
       {
         src: "/assets/img/sign-in.jpg",
@@ -240,12 +237,6 @@ export const projects: Project[] = [
       },
       {
         src: "/assets/img/algoviz-first.jpg",
-        alt: "AlgoViz",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        src: "/assets/img/algoviz-second.jpg",
         alt: "AlgoViz",
         width: 1920,
         height: 1080,
