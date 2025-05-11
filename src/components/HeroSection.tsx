@@ -106,7 +106,7 @@ const HeroSection = () => {
 
       <div className="relative text-center w-1/2 md:w-10/12 space-y-6 z-50 md:bg-black/60 p-4 rounded-2xl md:backdrop-blur-sm">
         <h1 className="relative font-orbitron text-7xl md:text-5xl font-bold tracking-wider text-shadow-lg">
-          <span className="relative inline-block">
+          <span className="relative inline-block md:min-h-27">
             <span
               className="bg-gradient-to-r from-electric-blue via-neon-purple to-cyan bg-clip-text text-transparent"
               ref={textRef}
