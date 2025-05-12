@@ -14,6 +14,7 @@ const Contact = () => {
       url: "mailto:rinorrexhaj10@gmail.com",
       color: "#EA4335",
       delay: 0,
+      description: "Send an email to Rinor Rexhaj",
     },
     {
       name: "LinkedIn",
@@ -21,6 +22,7 @@ const Contact = () => {
       url: "https://www.linkedin.com/in/rinor-rexhaj-4484181a8/",
       color: "#0077B5",
       delay: 0.2,
+      description: "View Rinor Rexhaj's LinkedIn profile",
     },
     {
       name: "GitHub",
@@ -28,6 +30,7 @@ const Contact = () => {
       url: "https://github.com/RinorRexhaj/",
       color: "#333",
       delay: 0.4,
+      description: "Visit Rinor Rexhaj's GitHub repositories",
     },
   ];
 
@@ -54,8 +57,13 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 w-11/12 max-w-7xl mx-auto">
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="py-20 w-11/12 max-w-7xl mx-auto"
+    >
       <motion.h2
+        id="contact-heading"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -63,6 +71,7 @@ const Contact = () => {
       >
         Get in Touch
       </motion.h2>
+
       <motion.div
         className="max-w-2xl mx-auto"
         variants={containerVariants}
@@ -76,6 +85,7 @@ const Contact = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={link.description}
               variants={itemVariants}
               whileHover={{
                 scale: 1.1,
@@ -96,6 +106,7 @@ const Contact = () => {
                     icon={link.icon}
                     className="text-3xl"
                     style={{ color: link.color }}
+                    aria-hidden="true"
                   />
                 </div>
                 <h3 className="font-orbitron text-xl text-electric-blue text-center">

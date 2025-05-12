@@ -25,14 +25,14 @@ const HeroSection = () => {
 
     // Sequentially reveal each layer
     [...Array(10)].forEach((_, i) => {
-      let wait = i === 0 ? 1000 : 0;
+      const wait = i === 0 ? 1000 : 0;
       setTimeout(() => {
         setLayers((prev) => {
           const updated = [...prev];
           updated[i] = true;
           return updated;
         });
-      }, i * 100 + 150 + wait); // delay in ms per layer
+      }, i * 100 + 150 + wait);
     });
 
     // Sequential light/hologram
@@ -49,35 +49,49 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="min-h-[80vh] mt-5 w-11/12 mx-auto max-w-7xl flex md:flex-col items-center justify-center">
-      <div className="relative top-35 md:top-60 w-1/2 flex justify-center md:w-full">
+    <section
+      className="min-h-[80vh] mt-5 w-11/12 mx-auto max-w-7xl flex md:flex-col items-center justify-center"
+      aria-label="Hero Section"
+    >
+      <div
+        className="relative top-35 md:top-60 w-1/2 flex justify-center md:w-full"
+        role="presentation"
+        aria-hidden="true"
+      >
         {/* Lights and hologram */}
         <img
           src="/assets/img/hologram/light.png"
-          alt="Light"
+          alt="Decorative light effect"
           className={`absolute -bottom-20 max-w-96 ${
             light ? "opacity-100" : "opacity-0"
           } transition-opacity duration-200`}
+          loading="lazy"
         />
         <img
           src="/assets/img/hologram/light2.png"
-          alt="Light 2"
+          alt="Secondary light effect"
           className={`absolute -bottom-20 ${
             light1 ? "opacity-100" : "opacity-0"
           } transition-opacity duration-300`}
+          loading="lazy"
         />
         <img
           src="/assets/img/hologram/hologram.png"
-          alt="Hologram"
+          alt="Holographic effect"
           className={`absolute -bottom-10 max-w-96 ${
             hologram ? "opacity-100" : "opacity-0"
           } transition-opacity duration-500`}
+          loading="lazy"
         />
 
         {/* Layers */}
-        <div className="absolute -bottom-32">
+        <div
+          className="absolute -bottom-32"
+          role="presentation"
+          aria-hidden="true"
+        >
           {[...Array(10)].map((_, i) => {
-            let scale = 1 - (i + 1) * 0.1 + 0.5; // progressively smaller
+            let scale = 1 - (i + 1) * 0.1 + 0.5;
             let bottomOffset = (i + 1) * 3.85;
             if (i === 0) {
               scale = 1.8;
@@ -88,7 +102,7 @@ const HeroSection = () => {
               <img
                 key={i}
                 src={`/assets/img/hologram/layer${i + 1}.png`}
-                alt={`Layer ${i + 1}`}
+                alt={`Decorative layer ${i + 1}`}
                 className={`absolute h-13 md:h-10 max-w-96 transition-opacity duration-300 ${
                   layers[i] ? "opacity-100" : "opacity-0"
                 }`}
@@ -98,31 +112,61 @@ const HeroSection = () => {
                   transform: `translateX(-50%) scale(${scale})`,
                   zIndex: i,
                 }}
+                loading="lazy"
               />
             );
           })}
         </div>
       </div>
 
-      <div className="relative text-center w-1/2 md:w-10/12 space-y-6 z-50 md:bg-black/60 p-4 rounded-2xl md:backdrop-blur-sm">
-        <h1 className="relative font-orbitron text-7xl md:text-5xl font-bold tracking-wider text-shadow-lg">
+      <div
+        className="relative text-center w-1/2 md:w-10/12 space-y-6 z-50 md:bg-black/60 p-4 rounded-2xl md:backdrop-blur-sm"
+        role="banner"
+      >
+        <h1
+          className="relative font-orbitron text-7xl md:text-5xl font-bold tracking-wider text-shadow-lg"
+          aria-label={fullText}
+        >
           <span className="relative inline-block md:min-h-27">
             <span
               className="bg-gradient-to-r from-electric-blue via-neon-purple to-cyan bg-clip-text text-transparent"
               ref={textRef}
+              aria-live="polite"
             ></span>
             <span
               className={`${
                 textDone ? "hidden" : "inline-block"
               } w-[2px] bg-white ml-1 animate-pulse`}
               style={{ height: "1em", verticalAlign: "bottom" }}
+              aria-hidden="true"
             />
-          </span>{" "}
+          </span>
         </h1>
-        <p className="font-spaceGrotesk text-text-secondary text-2xl md:text-xl max-w-2xl mx-auto text-shadow">
+        <p
+          className="font-spaceGrotesk text-text-secondary text-2xl md:text-xl max-w-2xl mx-auto text-shadow"
+          role="doc-subtitle"
+        >
           Exploring the intersection of creativity and technology
         </p>
       </div>
+
+      {/* Add structured data for the hero section */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Rinor Rexhaj - Full Stack Developer Portfolio",
+          description:
+            "Welcome to my portfolio showcasing my work in full-stack development, AI/ML, and data science",
+          mainEntity: {
+            "@type": "Person",
+            name: "Rinor Rexhaj",
+            jobTitle: "Full Stack Developer",
+            description:
+              "Exploring the intersection of creativity and technology",
+          },
+        })}
+      </script>
     </section>
   );
 };

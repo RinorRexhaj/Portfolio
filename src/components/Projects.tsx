@@ -25,7 +25,10 @@ const Projects = () => {
   };
 
   return (
-    <section className="py-20 w-11/12 mx-auto max-w-7xl">
+    <section
+      className="py-20 w-11/12 mx-auto max-w-7xl"
+      aria-label="Featured Projects"
+    >
       <h2 className="font-orbitron text-4xl mb-12 text-center">
         Featured Projects
       </h2>
@@ -46,6 +49,8 @@ const Projects = () => {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
             className="group relative bg-deep-space/50 backdrop-blur-sm border border-electric-blue/30 rounded-lg p-8 transition-all duration-300 hover:shadow-holographic-hover"
+            role="article"
+            aria-label={`Project: ${projects[currentIndex].title}`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -66,19 +71,25 @@ const Projects = () => {
         <button
           onClick={prevProject}
           className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-deep-space/80 backdrop-blur-sm border border-electric-blue/30 rounded-full p-3 text-electric-blue hover:bg-electric-blue/20 transition-colors duration-300"
+          aria-label="Previous project"
         >
           ←
         </button>
         <button
           onClick={nextProject}
           className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-deep-space/80 backdrop-blur-sm border border-electric-blue/30 rounded-full p-3 text-electric-blue hover:bg-electric-blue/20 transition-colors duration-300"
+          aria-label="Next project"
         >
           →
         </button>
       </div>
 
       {/* Project Navigation */}
-      <div className="flex justify-center gap-4">
+      <div
+        className="flex justify-center gap-4"
+        role="tablist"
+        aria-label="Project navigation"
+      >
         {projects.map((_, index) => (
           <button
             key={index}
@@ -88,6 +99,9 @@ const Projects = () => {
                 ? "bg-electric-blue scale-125"
                 : "bg-electric-blue/30 hover:bg-electric-blue/50"
             }`}
+            role="tab"
+            aria-selected={index === currentIndex}
+            aria-label={`Go to project ${index + 1}`}
           />
         ))}
       </div>

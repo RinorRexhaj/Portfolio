@@ -51,10 +51,14 @@ const Navbar: React.FC = () => {
           ? "bg-white/5 backdrop-blur-md shadow-md border-b border-white/10"
           : "bg-transparent"
       }`}
+      aria-label="Main navigation"
     >
       <div className="w-11/12 max-w-7xl mx-auto flex items-center justify-between">
         {/* Brand */}
-        <h1 className="flex text-3xl md:text-2xl font-semibold text-gray-800 overflow-hidden">
+        <h1
+          className="flex text-3xl md:text-2xl font-semibold text-gray-800 overflow-hidden"
+          aria-label="Rinor Rexhaj logo"
+        >
           {"Rinor Rexhaj".split("").map((char, index) => (
             <p
               className="animate-textReveal [animation-fill-mode:backwards]"
@@ -68,18 +72,25 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Links */}
         <ul className="md:hidden flex space-x-6 text-gray-700 font-medium">
-          {links.map((link: string, index: number) => (
-            <li
-              key={link}
-              onClick={() => handleScroll(link)}
-              className={`cursor-pointer transition text-lg animate-slideIn [animation-fill-mode:backwards] ${
-                activeLink === link
-                  ? "text-meta-5 font-semibold"
-                  : "hover:text-meta-5"
-              }`}
-              style={{ animationDelay: `${index * 0.3 + 0.5}s` }}
-            >
-              {link}
+          {links.map((link, index) => (
+            <li key={link}>
+              <a
+                href={`#${link.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(link);
+                }}
+                className={`cursor-pointer transition text-lg animate-slideIn [animation-fill-mode:backwards] ${
+                  activeLink === link
+                    ? "text-meta-5 font-semibold"
+                    : "hover:text-meta-5"
+                }`}
+                style={{ animationDelay: `${index * 0.3 + 0.5}s` }}
+                aria-current={activeLink === link ? "page" : undefined}
+                title={`Go to ${link} section`}
+              >
+                {link}
+              </a>
             </li>
           ))}
         </ul>
@@ -88,7 +99,8 @@ const Navbar: React.FC = () => {
         <button
           className="hidden md:block text-gray-700 animate-fade [animation-fill-mode:backwards]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
+          aria-label="Toggle mobile navigation menu"
+          title="Toggle menu"
         >
           {isMobileMenuOpen ? (
             <FontAwesomeIcon className="w-7 h-7" icon={faXmark} />
@@ -100,18 +112,25 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
-        <ul className="hidden md:flex mt-4 px-6 py-4  flex-col space-y-4 text-gray-700 font-medium bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade [animation-fill-mode:backwards]">
+        <ul className="hidden md:flex mt-4 px-6 py-4 flex-col space-y-4 text-gray-700 font-medium bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade [animation-fill-mode:backwards]">
           {links.map((link) => (
-            <li
-              key={link}
-              onClick={() => handleScroll(link)}
-              className={`cursor-pointer text-lg ${
-                activeLink === link
-                  ? "text-meta-5 font-semibold"
-                  : "hover:text-meta-5"
-              }`}
-            >
-              {link}
+            <li key={link}>
+              <a
+                href={`#${link.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(link);
+                }}
+                className={`cursor-pointer text-lg ${
+                  activeLink === link
+                    ? "text-meta-5 font-semibold"
+                    : "hover:text-meta-5"
+                }`}
+                aria-current={activeLink === link ? "page" : undefined}
+                title={`Go to ${link} section`}
+              >
+                {link}
+              </a>
             </li>
           ))}
         </ul>
