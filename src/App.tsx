@@ -5,6 +5,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Contact from "./components/Contact";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,6 +48,7 @@ const App = () => {
         isLoading && "max-h-screen overflow-hidden"
       } bg-deep-space text-text-primary relative overflow-hidden`}
     >
+      <Analytics />
       {/* Loading Animation */}
       {isLoading ? (
         <LoadingAnimation />
