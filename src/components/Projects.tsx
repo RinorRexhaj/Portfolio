@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/Projects";
 import Display from "./Display";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 const swipeConfidenceThreshold = 100;
 
@@ -55,9 +57,23 @@ const Projects = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
-              <h3 className="font-orbitron text-3xl md:text-2xl mb-6 text-electric-blue">
-                {projects[currentIndex].title}
-              </h3>
+              <div className="flex items-center gap-6 mb-4">
+                <h3 className="font-orbitron text-3xl md:text-2xl text-electric-blue">
+                  {projects[currentIndex].title}
+                </h3>
+                {currentIndex === 0 && (
+                  <a
+                    href="https://landair.app"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightFromSquare}
+                      className="text-xl md:text-lg"
+                    />
+                  </a>
+                )}
+              </div>
               <p className="font-spaceGrotesk text-text-secondary text-lg md:text-base mb-8">
                 {projects[currentIndex].description}
               </p>

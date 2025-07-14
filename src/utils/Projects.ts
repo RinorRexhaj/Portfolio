@@ -2,6 +2,55 @@ import { Project } from "../types/Project";
 
 export const projects: Project[] = [
   {
+    title: "LandAir",
+    description:
+      "AI-powered platform that generates and deploys websites in seconds.",
+    images: [
+      {
+        src: "/assets/img/landair-home.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-dashboard.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-project.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-mobile.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-code.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-deploy.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        src: "/assets/img/landair-settings.jpg",
+        alt: " UrbanCenter",
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  },
+  {
     title: "UrbanCenter",
     description: "Modern urban all-in-one city services platform.",
     images: [
