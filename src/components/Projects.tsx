@@ -61,9 +61,9 @@ const Projects = () => {
                 <h3 className="font-orbitron text-3xl md:text-2xl text-electric-blue">
                   {projects[currentIndex].title}
                 </h3>
-                {currentIndex === 0 && (
+                {projects[currentIndex].url && (
                   <a
-                    href="https://landair.app"
+                    href={projects[currentIndex].url}
                     rel="noopener noreferrer"
                     target="_blank"
                   >

@@ -2,6 +2,7 @@ export interface Project {
   title: string;
   description: string;
   images?: MediaProps[];
+  url?: string;
 }
 
 interface MediaProps {

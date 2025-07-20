@@ -5,6 +5,7 @@ export const projects: Project[] = [
     title: "LandAir",
     description:
       "AI-powered platform that generates and deploys websites in seconds.",
+    url: "https://landair.app",
     images: [
       {
         src: "/assets/img/landair-home.jpg",
@@ -53,6 +54,7 @@ export const projects: Project[] = [
   {
     title: "UrbanCenter",
     description: "Modern urban all-in-one city services platform.",
+    url: "https://www.youtube.com/watch?v=4aHe7O--GzE&t=5s",
     images: [
       {
         src: "/assets/img/urban-home.jpg",
