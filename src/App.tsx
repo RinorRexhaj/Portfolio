@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Contact from "./components/Contact";
 import { Analytics } from "@vercel/analytics/react";
@@ -89,11 +90,22 @@ const App = () => {
                   <Skills />
                 </div>
 
+                {/* Experience Section */}
+                <div
+                  style={{
+                    opacity: showContent ? 1 : 0,
+                    transition: "all 0.8s ease-out 0.8s",
+                  }}
+                  id="experience"
+                >
+                  <Experience />
+                </div>
+
                 {/* Contact Section */}
                 <div
                   style={{
                     opacity: showContent ? 1 : 0,
-                    transition: "all 0.8s ease-out 0.6s",
+                    transition: "all 0.8s ease-out 1.0s",
                   }}
                   id="contact"
                 >

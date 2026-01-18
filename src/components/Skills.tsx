@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faReact,
   faAngular,
-  faVue,
+  faVuejs,
   faNodeJs,
   faMicrosoft,
   faPython,
@@ -31,7 +31,7 @@ const skillsData = {
     },
     {
       name: "Vue.js",
-      icon: faVue,
+      icon: faVuejs,
       description: "Progressive Frameworks",
       color: "#06B6D4",
     },
