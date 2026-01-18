@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faReact,
   faAngular,
+  faVue,
   faNodeJs,
   faMicrosoft,
   faPython,
@@ -12,13 +13,12 @@ import {
   faBrain,
   faChartLine,
   faRobot,
-  faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 
 const skillsData = {
   "Front-End": [
     {
-      name: "React",
+      name: "React, Next.js",
       icon: faReact,
       description: "Modern UI Development",
       color: "#61DAFB",
@@ -30,13 +30,19 @@ const skillsData = {
       color: "#DD0031",
     },
     {
-      name: "Tailwind",
-      icon: faPalette,
-      description: "Utility-First CSS",
+      name: "Vue.js",
+      icon: faVue,
+      description: "Progressive Frameworks",
       color: "#06B6D4",
     },
   ],
   "Back-End": [
+    {
+      name: "Python (FastAPI, Flask)",
+      icon: faPython,
+      description: "Enterprise & AI Solutions",
+      color: "#06B6D4",
+    },
     {
       name: "Node.js",
       icon: faNodeJs,
@@ -48,12 +54,6 @@ const skillsData = {
       icon: faMicrosoft,
       description: "Enterprise Solutions",
       color: "#512BD4",
-    },
-    {
-      name: "Flask Python",
-      icon: faPython,
-      description: "Enterprise & AI Solutions",
-      color: "#06B6D4",
     },
   ],
   "AI and Data Science": [
