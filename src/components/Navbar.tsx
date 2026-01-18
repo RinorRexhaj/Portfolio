@@ -2,7 +2,14 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
-const links = ["About", "Projects", "Skills", "Contact"];
+const links = [
+  "About",
+  "Projects",
+  "Skills",
+  "Experience",
+  "Academic",
+  "Contact",
+];
 
 const Navbar: React.FC = () => {
   const [activeLink, setActiveLink] = useState<string>("");
