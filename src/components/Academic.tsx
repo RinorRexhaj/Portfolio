@@ -113,7 +113,7 @@ const Academic = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
-        className="font-orbitron text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-12 text-center"
+        className="font-orbitron text-4xl mb-12 text-center"
       >
         Academic Background
       </motion.h2>
@@ -127,23 +127,23 @@ const Academic = () => {
         {/* Main Education Card */}
         <motion.article
           variants={cardVariants}
-          className="relative group bg-deep-space/50 backdrop-blur-sm border border-electric-blue/30 rounded-lg p-4 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-holographic-hover"
+          className="relative group bg-deep-space/50 backdrop-blur-sm border border-electric-blue/30 rounded-lg p-8 transition-all duration-300 hover:shadow-holographic-hover"
         >
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           <div className="relative z-10">
             {/* Header */}
-            <div className="flex flex-col sm:flex-row items-start justify-between mb-6 gap-4">
-              <div className="flex-1 w-full">
-                <div className="flex items-center space-x-2 sm:space-x-3 mb-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-electric-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-12 h-12 bg-electric-blue/20 rounded-lg flex items-center justify-center">
                     <FontAwesomeIcon
                       icon={faGraduationCap}
-                      className="text-xl sm:text-2xl text-electric-blue"
+                      className="text-2xl text-electric-blue"
                     />
                   </div>
-                  <h3 className="font-orbitron text-base sm:text-xl md:text-2xl text-electric-blue leading-tight">
+                  <h3 className="font-orbitron text-2xl text-electric-blue">
                     {academicData.degree}
                   </h3>
                 </div>
@@ -151,11 +151,9 @@ const Academic = () => {
                 <div className="flex items-center space-x-2 text-text-secondary font-spaceGrotesk mb-2">
                   <FontAwesomeIcon
                     icon={faBook}
-                    className="text-electric-blue text-sm sm:text-base"
+                    className="text-electric-blue"
                   />
-                  <span className="text-sm sm:text-base md:text-lg">
-                    {academicData.institution}
-                  </span>
+                  <span className="text-lg">{academicData.institution}</span>
                   {academicData.website && (
                     <a
                       href={academicData.website}
@@ -172,27 +170,25 @@ const Academic = () => {
                 <div className="flex items-center space-x-2 text-text-secondary font-spaceGrotesk">
                   <FontAwesomeIcon
                     icon={faMapMarkerAlt}
-                    className="text-neon-purple text-sm sm:text-base"
+                    className="text-neon-purple"
                   />
-                  <span className="text-sm sm:text-base">
-                    {academicData.location}
-                  </span>
+                  <span>{academicData.location}</span>
                 </div>
               </div>
 
               {/* Achievement Badge */}
-              <div className="w-full sm:w-auto">
-                <div className="bg-gradient-to-br from-electric-blue/20 to-neon-purple/20 border-2 border-electric-blue/50 rounded-lg px-4 py-3 sm:px-6 sm:py-4">
-                  <div className="flex items-center justify-center sm:justify-start space-x-2 mb-2">
+              <div className="text-right md:text-left">
+                <div className="bg-gradient-to-br from-electric-blue/20 to-neon-purple/20 border-2 border-electric-blue/50 rounded-lg px-6 py-4">
+                  <div className="flex items-center space-x-2 mb-2">
                     <FontAwesomeIcon
                       icon={faStar}
-                      className="text-electric-blue text-base sm:text-lg"
+                      className="text-electric-blue"
                     />
-                    <span className="font-orbitron text-lg sm:text-xl text-electric-blue">
+                    <span className="font-orbitron text-xl text-electric-blue">
                       {academicData.grade}
                     </span>
                   </div>
-                  <p className="font-spaceGrotesk text-xs sm:text-sm text-text-secondary text-center sm:text-left">
+                  <p className="font-spaceGrotesk text-sm text-text-secondary">
                     {academicData.rank}
                   </p>
                 </div>
@@ -200,17 +196,17 @@ const Academic = () => {
             </div>
 
             {/* Thesis Section */}
-            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-electric-blue/5 border border-electric-blue/20 rounded-lg">
-              <div className="flex items-start space-x-2 sm:space-x-3">
+            <div className="mb-8 p-6 bg-electric-blue/5 border border-electric-blue/20 rounded-lg">
+              <div className="flex items-start space-x-3">
                 <FontAwesomeIcon
                   icon={faTrophy}
-                  className="text-electric-blue text-lg sm:text-xl mt-1 flex-shrink-0"
+                  className="text-electric-blue text-xl mt-1"
                 />
                 <div>
-                  <h4 className="font-orbitron text-base sm:text-lg text-electric-blue mb-2">
+                  <h4 className="font-orbitron text-lg text-electric-blue mb-2">
                     Thesis Project
                   </h4>
-                  <p className="font-spaceGrotesk text-sm sm:text-base text-text-secondary">
+                  <p className="font-spaceGrotesk text-text-secondary">
                     {academicData.thesis}
                   </p>
                 </div>
@@ -218,7 +214,7 @@ const Academic = () => {
             </div>
 
             {/* Coursework Categories */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="flex flex-col lg:flex-row gap-6 mb-8">
               {academicData.categories.map((category, idx) => (
                 <motion.div
                   key={category.title}
@@ -227,35 +223,35 @@ const Academic = () => {
                     isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                   }
                   transition={{ delay: idx * 0.15 + 0.3, duration: 0.5 }}
-                  className="bg-deep-space/30 border border-electric-blue/20 rounded-lg p-4 sm:p-5"
+                  className="bg-deep-space/30 border border-electric-blue/20 rounded-lg p-5"
                 >
-                  <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+                  <div className="flex items-center space-x-3 mb-4">
                     <div
-                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center"
                       style={{ backgroundColor: `${category.color}20` }}
                     >
                       <FontAwesomeIcon
                         icon={category.icon}
-                        className="text-base sm:text-lg"
+                        className="text-lg"
                         style={{ color: category.color }}
                       />
                     </div>
-                    <h4 className="font-orbitron text-sm sm:text-base text-electric-blue">
+                    <h4 className="font-orbitron text-base text-electric-blue">
                       {category.title}
                     </h4>
                   </div>
 
-                  <ul className="space-y-1.5 sm:space-y-2">
+                  <ul className="space-y-2">
                     {category.courses.map((course, courseIdx) => (
                       <li
                         key={courseIdx}
                         className="flex items-start space-x-2"
                       >
                         <div
-                          className="mt-1.5 sm:mt-2 w-1 h-1 rounded-full flex-shrink-0"
+                          className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
                           style={{ backgroundColor: category.color }}
                         />
-                        <span className="font-spaceGrotesk text-xs sm:text-sm text-text-secondary">
+                        <span className="font-spaceGrotesk text-sm text-text-secondary">
                           {course}
                         </span>
                       </li>
@@ -266,18 +262,18 @@ const Academic = () => {
             </div>
 
             {/* Awards Section */}
-            <div className="border-t border-electric-blue/20 pt-4 sm:pt-6">
-              <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+            <div className="border-t border-electric-blue/20 pt-6">
+              <div className="flex items-center space-x-3 mb-4">
                 <FontAwesomeIcon
                   icon={faAward}
-                  className="text-electric-blue text-lg sm:text-xl"
+                  className="text-electric-blue text-xl"
                 />
-                <h4 className="font-orbitron text-base sm:text-lg text-electric-blue">
+                <h4 className="font-orbitron text-lg text-electric-blue">
                   Scholarships & Awards
                 </h4>
               </div>
 
-              <div className="flex flex-wrap gap-2 sm:gap-3">
+              <div className="flex flex-wrap gap-3">
                 {academicData.awards.map((award, idx) => (
                   <motion.div
                     key={idx}
@@ -288,13 +284,13 @@ const Academic = () => {
                         : { opacity: 0, scale: 0.9 }
                     }
                     transition={{ delay: idx * 0.1 + 0.5, duration: 0.3 }}
-                    className="bg-gradient-to-r from-electric-blue/20 to-neon-purple/20 border border-electric-blue/30 rounded-full px-3 py-1.5 sm:px-5 sm:py-2 flex items-center space-x-1.5 sm:space-x-2"
+                    className="bg-gradient-to-r from-electric-blue/20 to-neon-purple/20 border border-electric-blue/30 rounded-full px-5 py-2 flex items-center space-x-2"
                   >
                     <FontAwesomeIcon
                       icon={faTrophy}
-                      className="text-electric-blue text-xs sm:text-sm flex-shrink-0"
+                      className="text-electric-blue text-sm"
                     />
-                    <span className="font-spaceGrotesk text-xs sm:text-sm text-text-primary">
+                    <span className="font-spaceGrotesk text-sm text-text-primary">
                       {award}
                     </span>
                   </motion.div>
@@ -305,11 +301,11 @@ const Academic = () => {
 
           {/* Decorative corner accents */}
           <div
-            className="hidden sm:block absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-electric-blue/5 to-neon-purple/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-electric-blue/5 to-neon-purple/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             aria-hidden="true"
           />
           <div
-            className="hidden sm:block absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-neon-purple/5 to-electric-blue/5 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-neon-purple/5 to-electric-blue/5 rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             aria-hidden="true"
           />
         </motion.article>
