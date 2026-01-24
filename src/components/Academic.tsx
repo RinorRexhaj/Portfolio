@@ -214,7 +214,7 @@ const Academic = () => {
             </div>
 
             {/* Coursework Categories */}
-            <div className="flex flex-col lg:flex-row gap-6 mb-8">
+            <div className="flex flex-row tb:flex-col gap-6 mb-8">
               {academicData.categories.map((category, idx) => (
                 <motion.div
                   key={category.title}
