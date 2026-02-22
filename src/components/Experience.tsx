@@ -17,13 +17,13 @@ const experienceData = [
     website: "https://seculyze.com",
     sector: "Information Technology / Software Development / Cyber Security",
     responsibilities: [
-      "Built and maintained front-end, back-end and cyber security features for the Seculyze SaaS platform",
-      "Delivered customer service contracts, ensuring performance monitoring, client support, and compliance documentation",
+      "Built and maintained AI/ML, back-end, front-end and cyber security features for the Seculyze SaaS platform",
       "Implemented and supported AI/ML initiatives and workflows with data preparation and validation, model testing, and integration with MLFlow and Azure Databricks",
       "Collaborated with cross-functional teams to deliver secure, user-friendly solutions",
       "Conducted code reviews, debugging, and issue resolution across environments",
       "Integrated third-party APIs and assisted with deployment, monitoring, and optimization",
       "Documented technical specs and processes, contributing to workflow improvements",
+      "Delivered customer service contracts, ensuring performance monitoring, client support, and compliance documentation",
     ],
   },
   {
