@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 
 const links = [
   "About",
-  "Projects",
-  "Skills",
   "Experience",
   "Academic",
+  "Projects",
+  "Skills",
   "Contact",
 ];
 

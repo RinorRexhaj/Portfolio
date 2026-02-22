@@ -13,7 +13,7 @@ const experienceData = [
     title: "Full-Stack Developer & AI/ML Engineer",
     company: "Seculyze",
     location: "Copenhagen, Denmark",
-    period: "Recent",
+    period: "Current",
     website: "https://seculyze.com",
     sector: "Information Technology / Software Development / Cyber Security",
     responsibilities: [

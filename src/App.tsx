@@ -71,26 +71,6 @@ const App = () => {
                   <HeroSection />
                 </div>
 
-                <div
-                  style={{
-                    opacity: showContent ? 1 : 0,
-                    transition: "all 0.8s ease-out 0.4s",
-                  }}
-                  id="projects"
-                >
-                  <Projects />
-                </div>
-
-                <div
-                  style={{
-                    opacity: showContent ? 1 : 0,
-                    transition: "all 0.8s ease-out 0.6s",
-                  }}
-                  id="skills"
-                >
-                  <Skills />
-                </div>
-
                 {/* Experience Section */}
                 <div
                   style={{
@@ -111,6 +91,28 @@ const App = () => {
                   id="academic"
                 >
                   <Academic />
+                </div>
+
+                {/* Projects Section */}
+                <div
+                  style={{
+                    opacity: showContent ? 1 : 0,
+                    transition: "all 0.8s ease-out 0.4s",
+                  }}
+                  id="projects"
+                >
+                  <Projects />
+                </div>
+
+                {/* Skills Section */}
+                <div
+                  style={{
+                    opacity: showContent ? 1 : 0,
+                    transition: "all 0.8s ease-out 0.6s",
+                  }}
+                  id="skills"
+                >
+                  <Skills />
                 </div>
 
                 {/* Contact Section */}

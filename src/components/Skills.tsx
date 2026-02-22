@@ -16,24 +16,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const skillsData = {
-  "Front-End": [
+  "AI and Data Science": [
     {
-      name: "React, Next.js",
-      icon: faReact,
-      description: "Modern UI Development",
-      color: "#61DAFB",
+      name: "Machine Learning",
+      icon: faBrain,
+      description: "Predictive Models",
+      color: "#FF6B6B",
     },
     {
-      name: "Angular",
-      icon: faAngular,
-      description: "Enterprise Applications",
-      color: "#DD0031",
+      name: "Data Analysis",
+      icon: faChartLine,
+      description: "Data Insights",
+      color: "#4ECDC4",
     },
     {
-      name: "Vue.js",
-      icon: faVuejs,
-      description: "Progressive Frameworks",
-      color: "#06B6D4",
+      name: "Deep Learning",
+      icon: faRobot,
+      description: "Neural Networks",
+      color: "#45B7D1",
     },
   ],
   "Back-End": [
@@ -56,24 +56,24 @@ const skillsData = {
       color: "#512BD4",
     },
   ],
-  "AI and Data Science": [
+  "Front-End": [
     {
-      name: "Machine Learning",
-      icon: faBrain,
-      description: "Predictive Models",
-      color: "#FF6B6B",
+      name: "React, Next.js",
+      icon: faReact,
+      description: "Modern UI Development",
+      color: "#61DAFB",
     },
     {
-      name: "Data Analysis",
-      icon: faChartLine,
-      description: "Data Insights",
-      color: "#4ECDC4",
+      name: "Angular",
+      icon: faAngular,
+      description: "Enterprise Applications",
+      color: "#DD0031",
     },
     {
-      name: "Deep Learning",
-      icon: faRobot,
-      description: "Neural Networks",
-      color: "#45B7D1",
+      name: "Vue.js",
+      icon: faVuejs,
+      description: "Progressive Frameworks",
+      color: "#06B6D4",
     },
   ],
 };
