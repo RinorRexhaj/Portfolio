@@ -13,7 +13,7 @@ const experienceData = [
     title: "Full-Stack Developer & AI/ML Engineer",
     company: "Seculyze",
     location: "Copenhagen, Denmark",
-    period: "Current",
+    period: "Aug 2025 - Current",
     website: "https://seculyze.com",
     sector: "Information Technology / Software Development / Cyber Security",
     responsibilities: [
@@ -30,7 +30,7 @@ const experienceData = [
     title: "Full-Stack Developer",
     company: "Elba Technologies",
     location: "Pristina, Kosovo / Stuttgart, Germany",
-    period: "Previous",
+    period: "Aug 2024 - May 2025",
     website: "https://elba-tech.com",
     sector: "Information Technology / Software Development",
     responsibilities: [
