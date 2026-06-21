@@ -10,7 +10,7 @@ import {
 
 const experienceData = [
   {
-    title: "Full-Stack Developer & AI/ML Engineer",
+    title: "Software & AI/ML Engineer",
     company: "Seculyze",
     location: "Copenhagen, Denmark",
     period: "Aug 2025 - Current",
