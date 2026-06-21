@@ -19,6 +19,7 @@ const experienceData = [
     responsibilities: [
       "Built and maintained AI/ML, back-end, front-end and cyber security features for the Seculyze SaaS platform",
       "Implemented and supported AI/ML initiatives and workflows with data preparation and validation, model testing, and integration with MLFlow and Azure Databricks",
+      "Implemented complex back-end features across multi-tenant SaaS architecture, ensuring scalability, security, and performance",
       "Collaborated with cross-functional teams to deliver secure, user-friendly solutions",
       "Conducted code reviews, debugging, and issue resolution across environments",
       "Integrated third-party APIs and assisted with deployment, monitoring, and optimization",
