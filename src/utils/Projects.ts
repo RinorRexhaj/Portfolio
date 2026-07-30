@@ -2,6 +2,43 @@ import { Project } from "../types/Project";
 
 export const projects: Project[] = [
   {
+    title: "TradeBot",
+    description:
+      "Automated trading platform for building, backtesting, and running custom trading strategies.",
+    images: [
+      {
+        src: "/assets/img/tradebot-dashboard.png",
+        alt: "TradeBot Dashboard",
+        width: 1900,
+        height: 945,
+      },
+      {
+        src: "/assets/img/tradebot-market.png",
+        alt: "TradeBot Market View",
+        width: 1902,
+        height: 952,
+      },
+      {
+        src: "/assets/img/tradebot-strategy-selection.png",
+        alt: "TradeBot Strategy Selection",
+        width: 1907,
+        height: 948,
+      },
+      {
+        src: "/assets/img/tradebot-strategy-performance.png",
+        alt: "TradeBot Strategy Performance",
+        width: 1902,
+        height: 951,
+      },
+      {
+        src: "/assets/img/tradebot-transactions.png",
+        alt: "TradeBot Transactions",
+        width: 1902,
+        height: 947,
+      },
+    ],
+  },
+  {
     title: "DocuForge",
     description:
       "AI-powered document forgery detection system using CNN and computer vision.",
