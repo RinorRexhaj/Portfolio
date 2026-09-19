@@ -83,9 +83,7 @@ const App = () => {
       <div className="relative z-10">
         <main className="container mx-auto px-4 py-8">
           <div className="space-y-20 md:space-y-10">
-            <div id="about">
-              <HeroSection />
-            </div>
+            <HeroSection />
             <Experience />
             <Academic />
             <Projects />

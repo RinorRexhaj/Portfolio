@@ -578,5 +578,149 @@
       960,
       1440
     ]
+  },
+  "/assets/img/hologram/dots.png": {
+    "width": 441,
+    "height": 187,
+    "base": "/assets/img/opt/dots",
+    "widths": [
+      441
+    ]
+  },
+  "/assets/img/hologram/head1.png": {
+    "width": 368,
+    "height": 436,
+    "base": "/assets/img/opt/head1",
+    "widths": [
+      368
+    ]
+  },
+  "/assets/img/hologram/head2.png": {
+    "width": 368,
+    "height": 436,
+    "base": "/assets/img/opt/head2",
+    "widths": [
+      368
+    ]
+  },
+  "/assets/img/hologram/head3.png": {
+    "width": 368,
+    "height": 436,
+    "base": "/assets/img/opt/head3",
+    "widths": [
+      368
+    ]
+  },
+  "/assets/img/hologram/hologram-icon.png": {
+    "width": 700,
+    "height": 700,
+    "base": "/assets/img/opt/hologram-icon",
+    "widths": [
+      700
+    ]
+  },
+  "/assets/img/hologram/hologram.png": {
+    "width": 500,
+    "height": 569,
+    "base": "/assets/img/opt/hologram",
+    "widths": [
+      500
+    ]
+  },
+  "/assets/img/hologram/layer1.png": {
+    "width": 565,
+    "height": 114,
+    "base": "/assets/img/opt/layer1",
+    "widths": [
+      565
+    ]
+  },
+  "/assets/img/hologram/layer10.png": {
+    "width": 152,
+    "height": 23,
+    "base": "/assets/img/opt/layer10",
+    "widths": [
+      152
+    ]
+  },
+  "/assets/img/hologram/layer2.png": {
+    "width": 446,
+    "height": 65,
+    "base": "/assets/img/opt/layer2",
+    "widths": [
+      446
+    ]
+  },
+  "/assets/img/hologram/layer3.png": {
+    "width": 522,
+    "height": 77,
+    "base": "/assets/img/opt/layer3",
+    "widths": [
+      522
+    ]
+  },
+  "/assets/img/hologram/layer4.png": {
+    "width": 413,
+    "height": 60,
+    "base": "/assets/img/opt/layer4",
+    "widths": [
+      413
+    ]
+  },
+  "/assets/img/hologram/layer5.png": {
+    "width": 376,
+    "height": 55,
+    "base": "/assets/img/opt/layer5",
+    "widths": [
+      376
+    ]
+  },
+  "/assets/img/hologram/layer6.png": {
+    "width": 261,
+    "height": 38,
+    "base": "/assets/img/opt/layer6",
+    "widths": [
+      261
+    ]
+  },
+  "/assets/img/hologram/layer7.png": {
+    "width": 333,
+    "height": 49,
+    "base": "/assets/img/opt/layer7",
+    "widths": [
+      333
+    ]
+  },
+  "/assets/img/hologram/layer8.png": {
+    "width": 309,
+    "height": 45,
+    "base": "/assets/img/opt/layer8",
+    "widths": [
+      309
+    ]
+  },
+  "/assets/img/hologram/layer9.png": {
+    "width": 195,
+    "height": 28,
+    "base": "/assets/img/opt/layer9",
+    "widths": [
+      195
+    ]
+  },
+  "/assets/img/hologram/light.png": {
+    "width": 246,
+    "height": 288,
+    "base": "/assets/img/opt/light",
+    "widths": [
+      246
+    ]
+  },
+  "/assets/img/hologram/light2.png": {
+    "width": 552,
+    "height": 235,
+    "base": "/assets/img/opt/light2",
+    "widths": [
+      552
+    ]
   }
 }

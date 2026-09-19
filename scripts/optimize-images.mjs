@@ -8,6 +8,7 @@
  * Variants land in public/assets/img/opt/<name>-<width>.<ext>.
  */
 import { readFile, writeFile, mkdir, readdir, stat } from "node:fs/promises";
+import { glob } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
@@ -19,6 +20,8 @@ const DATA = path.join(ROOT, "src/utils/Projects.ts");
 const MANIFEST = path.join(ROOT, "src/utils/imageManifest.json");
 
 const WIDTHS = [480, 960, 1440];
+/** Hero art is laid out at fixed sizes, so it converts format-only. */
+const HERO_GLOB = "assets/img/hologram/*.png";
 const AVIF = { quality: 50, effort: 4 };
 const WEBP = { quality: 72 };
 
@@ -26,7 +29,16 @@ const baseName = (src) => path.basename(src, path.extname(src));
 
 async function main() {
   const source = await readFile(DATA, "utf8");
-  const refs = [...new Set([...source.matchAll(/src: "([^"]+)"/g)].map((m) => m[1]))];
+  const carousel = [...new Set([...source.matchAll(/src: "([^"]+)"/g)].map((m) => m[1]))];
+
+  // Hero art keeps its intrinsic size: only the encoding changes.
+  const hero = [];
+  for await (const entry of glob(HERO_GLOB, { cwd: PUBLIC })) {
+    hero.push("/" + entry.split(path.sep).join("/"));
+  }
+
+  const refs = [...carousel, ...hero.sort()];
+  const formatOnly = new Set(hero);
 
   await mkdir(OUT_DIR, { recursive: true });
 
@@ -50,7 +62,9 @@ async function main() {
     manifest[ref] = { width, height, base: `/assets/img/opt/${name}` };
 
     // Never upscale: a 900px-wide source gets no 1440 variant.
-    const targets = WIDTHS.filter((w) => w <= width);
+    const targets = formatOnly.has(ref)
+      ? [width]
+      : WIDTHS.filter((w) => w <= width);
     if (targets.length === 0) targets.push(width);
 
     for (const w of targets) {
