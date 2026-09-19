@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const HeroSection = () => {
-  const fullText = "Welcome to My Portfolio";
+  const fullText = "AI & Software Engineer";
   const [textDone, setTextDone] = useState(false);
   const textRef = useRef<HTMLSpanElement>(null);
   const [layers, setLayers] = useState<boolean[]>(Array(10).fill(false));
@@ -14,7 +14,7 @@ const HeroSection = () => {
     const interval = setInterval(() => {
       setTimeout(() => {
         if (index < fullText.length && textRef.current) {
-          textRef.current.innerHTML += fullText[index];
+          textRef.current.textContent += fullText[index];
           index++;
         } else {
           setTextDone(true);
@@ -119,33 +119,28 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div
-        className="relative text-center w-1/2 md:w-10/12 space-y-6 z-50 md:bg-black/60 p-4 rounded-2xl md:backdrop-blur-sm"
-        role="banner"
-      >
-        <h1
-          className="relative font-orbitron text-7xl md:text-5xl font-bold tracking-wider text-shadow-lg"
-          aria-label={fullText}
-        >
-          <span className="relative inline-block md:min-h-27">
-            <span
-              className="bg-gradient-to-r from-electric-blue via-neon-purple to-cyan bg-clip-text text-transparent"
-              ref={textRef}
-              aria-live="polite"
-            ></span>
+      <div className="relative text-center w-1/2 md:w-10/12 space-y-6 z-50 md:bg-black/60 p-4 rounded-2xl md:backdrop-blur-sm">
+        <h1 className="relative font-orbitron text-7xl md:text-5xl font-bold tracking-wider text-shadow-lg">
+          <span className="bg-gradient-to-r from-electric-blue via-neon-purple to-cyan bg-clip-text text-transparent">
+            Rinor Rexhaj
+          </span>
+        </h1>
+
+        {/* Role, typed out. Screen readers get it whole; the animation is decorative. */}
+        <p className="font-orbitron text-3xl md:text-2xl font-medium text-text-primary min-h-[1.4em] text-shadow">
+          <span className="sr-only">{fullText}</span>
+          <span className="relative inline-block" aria-hidden="true">
+            <span ref={textRef} />
             <span
               className={`${
                 textDone ? "hidden" : "inline-block"
               } w-[2px] bg-white ml-1 animate-pulse`}
               style={{ height: "1em", verticalAlign: "bottom" }}
-              aria-hidden="true"
             />
           </span>
-        </h1>
-        <p
-          className="font-spaceGrotesk text-text-secondary text-2xl md:text-xl max-w-2xl mx-auto text-shadow"
-          role="doc-subtitle"
-        >
+        </p>
+
+        <p className="font-spaceGrotesk text-text-secondary text-2xl md:text-xl max-w-2xl mx-auto text-shadow">
           Exploring the intersection of creativity and technology
         </p>
       </div>

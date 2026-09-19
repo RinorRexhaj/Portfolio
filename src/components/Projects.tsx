@@ -1,21 +1,42 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { lazy, Suspense, useRef } from "react";
 import { projects } from "../utils/Projects";
-import Display from "./Display";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  selectProjectIndex,
+  useSelectedProjectIndex,
+} from "../hooks/useProjectSelection";
+
+// Split out of the main bundle and only mounted once the carousel is close to
+// the viewport, so its screenshots cost nothing on first paint.
+const Display = lazy(() => import("./Display"));
 
 const swipeConfidenceThreshold = 100;
 
+/** Matches Display's main-stage height so mounting causes no layout shift. */
+const DisplaySkeleton = () => (
+  <div className="w-full flex md:flex-col gap-4 items-start" aria-hidden="true">
+    <div className="flex-1 h-96 md:h-56 w-9/12 md:w-full rounded-lg bg-deep-space/30" />
+    <div className="w-4/12 md:w-full h-9" />
+  </div>
+);
+
 const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Shared with the Experience section, which links straight to a slide.
+  const currentIndex = useSelectedProjectIndex();
+  const sectionRef = useRef(null);
+  const isNearViewport = useInView(sectionRef, {
+    once: true,
+    margin: "300px",
+  });
 
   const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    selectProjectIndex((currentIndex + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    selectProjectIndex((currentIndex - 1 + projects.length) % projects.length);
   };
 
   const handleSwipe = (offsetX: number) => {
@@ -28,10 +49,15 @@ const Projects = () => {
 
   return (
     <section
-      className="py-20 w-11/12 mx-auto max-w-7xl"
-      aria-label="Featured Projects"
+      id="projects"
+      ref={sectionRef}
+      className="py-20 w-11/12 mx-auto max-w-7xl scroll-mt-24"
+      aria-labelledby="projects-heading"
     >
-      <h2 className="font-orbitron text-4xl mb-12 text-center">
+      <h2
+        id="projects-heading"
+        className="font-orbitron text-4xl mb-12 text-center"
+      >
         Featured Projects
       </h2>
 
@@ -42,10 +68,7 @@ const Projects = () => {
             key={currentIndex}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={(event, info) => {
-              event;
-              handleSwipe(info.offset.x);
-            }}
+            onDragEnd={(_, info) => handleSwipe(info.offset.x)}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
@@ -78,7 +101,13 @@ const Projects = () => {
                 {projects[currentIndex].description}
               </p>
 
-              <Display currentIndex={currentIndex} />
+              {isNearViewport ? (
+                <Suspense fallback={<DisplaySkeleton />}>
+                  <Display currentIndex={currentIndex} />
+                </Suspense>
+              ) : (
+                <DisplaySkeleton />
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
@@ -106,10 +135,10 @@ const Projects = () => {
         role="tablist"
         aria-label="Project navigation"
       >
-        {projects.map((_, index) => (
+        {projects.map((project, index) => (
           <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
+            key={project.title}
+            onClick={() => selectProjectIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentIndex
                 ? "bg-electric-blue scale-125"
@@ -117,7 +146,7 @@ const Projects = () => {
             }`}
             role="tab"
             aria-selected={index === currentIndex}
-            aria-label={`Go to project ${index + 1}`}
+            aria-label={`Go to project ${index + 1}: ${project.title}`}
           />
         ))}
       </div>

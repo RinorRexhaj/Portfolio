@@ -1,0 +1,582 @@
+{
+  "/assets/img/tradebot-dashboard.png": {
+    "width": 1900,
+    "height": 945,
+    "base": "/assets/img/opt/tradebot-dashboard",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/tradebot-market.png": {
+    "width": 1902,
+    "height": 952,
+    "base": "/assets/img/opt/tradebot-market",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/tradebot-strategy-selection.png": {
+    "width": 1907,
+    "height": 948,
+    "base": "/assets/img/opt/tradebot-strategy-selection",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/tradebot-strategy-performance.png": {
+    "width": 1902,
+    "height": 951,
+    "base": "/assets/img/opt/tradebot-strategy-performance",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/tradebot-transactions.png": {
+    "width": 1902,
+    "height": 947,
+    "base": "/assets/img/opt/tradebot-transactions",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-heatmap.png": {
+    "width": 1900,
+    "height": 915,
+    "base": "/assets/img/opt/docuforge-heatmap",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-analyze.png": {
+    "width": 1920,
+    "height": 916,
+    "base": "/assets/img/opt/docuforge-analyze",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-upload.png": {
+    "width": 1918,
+    "height": 918,
+    "base": "/assets/img/opt/docuforge-upload",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-mask.png": {
+    "width": 1897,
+    "height": 915,
+    "base": "/assets/img/opt/docuforge-mask",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-original.png": {
+    "width": 1900,
+    "height": 916,
+    "base": "/assets/img/opt/docuforge-original",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/docuforge-regions.png": {
+    "width": 1897,
+    "height": 917,
+    "base": "/assets/img/opt/docuforge-regions",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-home.jpg": {
+    "width": 1902,
+    "height": 917,
+    "base": "/assets/img/opt/landair-home",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-dashboard.jpg": {
+    "width": 1920,
+    "height": 915,
+    "base": "/assets/img/opt/landair-dashboard",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-project.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/landair-project",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-mobile.jpg": {
+    "width": 1920,
+    "height": 908,
+    "base": "/assets/img/opt/landair-mobile",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-code.jpg": {
+    "width": 1920,
+    "height": 913,
+    "base": "/assets/img/opt/landair-code",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-deploy.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/landair-deploy",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/landair-settings.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/landair-settings",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-home.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/urban-home",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-chat-1.jpg": {
+    "width": 1920,
+    "height": 918,
+    "base": "/assets/img/opt/urban-chat-1",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-chat-2.jpg": {
+    "width": 1920,
+    "height": 922,
+    "base": "/assets/img/opt/urban-chat-2",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-login.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/urban-login",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-ride.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/urban-ride",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-eat-1.jpg": {
+    "width": 1920,
+    "height": 922,
+    "base": "/assets/img/opt/urban-eat-1",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-eat-2.jpg": {
+    "width": 1920,
+    "height": 918,
+    "base": "/assets/img/opt/urban-eat-2",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/urban-payment.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/urban-payment",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/villa-home.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/villa-home",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/villa-about.jpg": {
+    "width": 1920,
+    "height": 841,
+    "base": "/assets/img/opt/villa-about",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/villa-chat.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/villa-chat",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/villa-book.jpg": {
+    "width": 1918,
+    "height": 917,
+    "base": "/assets/img/opt/villa-book",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-init.jpg": {
+    "width": 1918,
+    "height": 917,
+    "base": "/assets/img/opt/powerdash-init",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-filter.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/powerdash-filter",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-search.jpg": {
+    "width": 1920,
+    "height": 918,
+    "base": "/assets/img/opt/powerdash-search",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-bar.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/powerdash-bar",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-ai.jpg": {
+    "width": 1920,
+    "height": 921,
+    "base": "/assets/img/opt/powerdash-ai",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-multi.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/powerdash-multi",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/powerdash-report.jpg": {
+    "width": 1920,
+    "height": 921,
+    "base": "/assets/img/opt/powerdash-report",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/sign-in.jpg": {
+    "width": 1920,
+    "height": 922,
+    "base": "/assets/img/opt/sign-in",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/dashboard-1.jpg": {
+    "width": 1920,
+    "height": 922,
+    "base": "/assets/img/opt/dashboard-1",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/dashboard-2.jpg": {
+    "width": 1920,
+    "height": 923,
+    "base": "/assets/img/opt/dashboard-2",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/notifications.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/notifications",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/top-cars.jpg": {
+    "width": 1920,
+    "height": 877,
+    "base": "/assets/img/opt/top-cars",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/orders.jpg": {
+    "width": 1847,
+    "height": 918,
+    "base": "/assets/img/opt/orders",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/reservations.jpg": {
+    "width": 1920,
+    "height": 875,
+    "base": "/assets/img/opt/reservations",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/settings.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/settings",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/db-first.jpg": {
+    "width": 1920,
+    "height": 912,
+    "base": "/assets/img/opt/db-first",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/db-second.jpg": {
+    "width": 1920,
+    "height": 915,
+    "base": "/assets/img/opt/db-second",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/db-jump.jpg": {
+    "width": 1920,
+    "height": 907,
+    "base": "/assets/img/opt/db-jump",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/db-attack.jpg": {
+    "width": 1920,
+    "height": 912,
+    "base": "/assets/img/opt/db-attack",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/db-win.jpg": {
+    "width": 1920,
+    "height": 913,
+    "base": "/assets/img/opt/db-win",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-init.jpg": {
+    "width": 1898,
+    "height": 917,
+    "base": "/assets/img/opt/algoviz-init",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-first.jpg": {
+    "width": 1900,
+    "height": 922,
+    "base": "/assets/img/opt/algoviz-first",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-third.jpg": {
+    "width": 1898,
+    "height": 922,
+    "base": "/assets/img/opt/algoviz-third",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-end.jpg": {
+    "width": 1901,
+    "height": 920,
+    "base": "/assets/img/opt/algoviz-end",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-sort.jpg": {
+    "width": 1920,
+    "height": 920,
+    "base": "/assets/img/opt/algoviz-sort",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-selection.jpg": {
+    "width": 1920,
+    "height": 917,
+    "base": "/assets/img/opt/algoviz-selection",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-insertion.jpg": {
+    "width": 1920,
+    "height": 918,
+    "base": "/assets/img/opt/algoviz-insertion",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "/assets/img/algoviz-shell.jpg": {
+    "width": 1920,
+    "height": 922,
+    "base": "/assets/img/opt/algoviz-shell",
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  }
+}
