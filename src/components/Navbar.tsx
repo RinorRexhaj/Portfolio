@@ -1,6 +1,6 @@
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const links = [
   "About",
@@ -15,51 +15,72 @@ const BRAND = "Rinor Rexhaj";
 
 /** Active is bright and on-palette; inactive is muted. */
 const linkClasses = (isActive: boolean) =>
-  `cursor-pointer rounded transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric-blue ${
+  `inline-block py-1 cursor-pointer rounded transition-colors ${
     isActive
       ? "text-electric-blue font-semibold"
       : "text-text-secondary/70 hover:text-electric-blue"
   }`;
 
 const Navbar: React.FC = () => {
-  const [activeLink, setActiveLink] = useState<string>("");
+  const [activeLink, setActiveLink] = useState<string>("About");
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleScroll = (id: string) => {
-    setTimeout(() => {
-      const element = document.getElementById(id.toLowerCase());
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        setIsMobileMenuOpen(false); // Close mobile menu on click
-      }
-    }, 100);
+    document
+      .getElementById(id.toLowerCase())
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMobileMenuOpen(false);
   };
 
+  // Scroll spy. An observer replaces the old scroll listener, which read
+  // offsetTop for every section on every scroll event (forcing a reflow each
+  // time) and compared against an `activeLink` its empty dep array had frozen
+  // at "".
   useEffect(() => {
-    setActiveLink("About");
-    const handleScrollEvent = () => {
-      let current = "";
-      for (const link of links) {
-        const section = document.getElementById(link.toLowerCase());
-        if (section) {
-          const offset = section.offsetTop - 350;
-          if (window.scrollY >= offset) {
-            current = link;
-          }
-        }
-      }
-      if (current !== activeLink) {
-        setActiveLink(current);
-      }
+    const sections = links
+      .map((link) => document.getElementById(link.toLowerCase()))
+      .filter((el): el is HTMLElement => el !== null);
 
-      setScrolled(window.scrollY > 100);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+          )[0];
+        if (!visible) return;
+        const id = visible.target.id;
+        setActiveLink(id.charAt(0).toUpperCase() + id.slice(1));
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // E13: Escape closes the menu and returns focus to the control that opened it.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setIsMobileMenuOpen(false);
+      menuButtonRef.current?.focus();
     };
 
-    window.addEventListener("scroll", handleScrollEvent);
-    handleScrollEvent();
-    return () => window.removeEventListener("scroll", handleScrollEvent);
-  }, []);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isMobileMenuOpen]);
 
   return (
     <nav
@@ -78,7 +99,7 @@ const Navbar: React.FC = () => {
             e.preventDefault();
             handleScroll("About");
           }}
-          className="flex text-3xl md:text-2xl font-semibold text-text-primary overflow-hidden rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric-blue"
+          className="flex text-3xl md:text-2xl font-semibold text-text-primary overflow-hidden rounded"
           aria-label={`${BRAND} — back to top`}
         >
           {BRAND.split("").map((char, index) => (
@@ -118,10 +139,12 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="hidden md:block text-text-primary rounded animate-fade [animation-fill-mode:backwards] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric-blue"
+          ref={menuButtonRef}
+          className="hidden md:grid place-items-center w-11 h-11 shrink-0 -mr-2 text-text-primary rounded animate-fade [animation-fill-mode:backwards]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle mobile navigation menu"
           aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
           title="Toggle menu"
         >
           {isMobileMenuOpen ? (
@@ -134,7 +157,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
-        <ul className="hidden md:flex mt-4 px-6 py-4 flex-col space-y-4 font-medium bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade [animation-fill-mode:backwards]">
+        <ul id="mobile-menu" className="hidden md:flex mt-4 px-6 py-4 flex-col space-y-4 font-medium bg-white/5 backdrop-blur-sm border-t border-white/10 animate-fade [animation-fill-mode:backwards]">
           {links.map((link) => (
             <li key={link}>
               <a

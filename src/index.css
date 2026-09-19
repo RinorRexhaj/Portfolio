@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: theme("fontFamily.inter");
+@layer base {
+  body {
+    font-family: theme("fontFamily.inter");
+  }
+
+  /*
+   * A single visible focus ring for everything interactive. Browser defaults
+   * render as a thin, low-contrast outline on this near-black background,
+   * which is effectively invisible. :where() keeps specificity at zero so any
+   * component can still opt out.
+   */
+  :where(a, button, [role="button"], input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid theme("colors.electric-blue");
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Clears the fixed navbar when jumping to an anchor. */
+  :where([id]) {
+    scroll-margin-top: 6rem;
+  }
 }
 
 @keyframes gradient-x {
@@ -20,4 +39,20 @@ body {
   background: linear-gradient(-45deg, #0f0c29, #1a1a40, #302b63, #6a0572);
   background-size: 400% 400%;
   animation: gradient-x 15s ease infinite;
+}
+
+/*
+ * Covers CSS-driven motion (scan lines, pings, the text reveal). Motion driven
+ * by framer-motion is handled separately by <MotionConfig reducedMotion="user">
+ * in App.tsx, since those animations run as inline styles rather than CSS.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

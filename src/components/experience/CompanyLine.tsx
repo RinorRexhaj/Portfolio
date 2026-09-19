@@ -27,7 +27,7 @@ const CompanyLine: React.FC<CompanyLineProps> = ({ company }) => (
         href={company.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded text-sm text-electric-blue transition-colors hover:text-neon-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue"
+        className="inline-grid place-items-center w-6 h-6 shrink-0 rounded text-sm text-electric-blue transition-colors hover:text-neon-purple"
         aria-label={`Visit the ${company.name} website (opens in a new tab)`}
       >
         <FontAwesomeIcon icon={faArrowUpRightFromSquare} aria-hidden="true" />

@@ -8,6 +8,7 @@ import Academic from "./components/Academic";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { MotionConfig } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 
 /** Hard ceiling on the intro overlay. Content is never gated on it. */
@@ -17,7 +18,7 @@ const App = () => {
   // The overlay starts hidden when the tab is already backgrounded: timers are
   // throttled there, so anything waiting on one would leave a blank page.
   const [isLoading, setIsLoading] = useState(
-    () => typeof document === "undefined" || !document.hidden
+    () => typeof document === "undefined" || !document.hidden,
   );
 
   useEffect(() => {
@@ -66,46 +67,48 @@ const App = () => {
   }, []);
 
   return (
-    <div
-      className={`min-h-screen ${
-        isLoading ? "max-h-screen overflow-hidden" : ""
-      } bg-deep-space text-text-primary relative overflow-hidden`}
-    >
-      <Analytics />
+    <MotionConfig reducedMotion="user">
+      <div
+        className={`min-h-screen ${
+          isLoading ? "max-h-screen overflow-hidden" : ""
+        } bg-deep-space text-text-primary relative overflow-hidden`}
+      >
+        <Analytics />
 
-      {/* Intro overlay. Purely on top of the content, never in place of it. */}
-      {isLoading && <LoadingAnimation />}
+        {/* Intro overlay. Purely on top of the content, never in place of it. */}
+        {isLoading && <LoadingAnimation />}
 
-      <Navbar />
+        <Navbar />
 
-      {/* Content renders immediately. Each section owns its own entry
+        {/* Content renders immediately. Each section owns its own entry
           animation, so there is no page-level reveal to get stuck. */}
-      <div className="relative z-10">
-        <main className="container mx-auto px-4 py-8">
-          <div className="space-y-20 md:space-y-10">
-            <HeroSection />
-            <Experience />
-            <Academic />
-            <Projects />
-            <Skills />
-            <Contact />
-          </div>
-        </main>
-        <Footer />
+        <div className="relative z-10">
+          <main className="container mx-auto px-4 py-8">
+            <div className="space-y-20 md:space-y-10">
+              <HeroSection />
+              <Experience />
+              <Academic />
+              <Projects />
+              <Skills />
+              <Contact />
+            </div>
+          </main>
+          <Footer />
+        </div>
+
+        {/* Background grid pattern */}
+        <div
+          className="absolute inset-0 bg-grid-pattern bg-grid opacity-40"
+          aria-hidden="true"
+        ></div>
+
+        {/* Scan line effect */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-electric-blue/0 via-electric-blue/5 to-electric-blue/0 animate-scan pointer-events-none motion-reduce:animate-none"
+          aria-hidden="true"
+        ></div>
       </div>
-
-      {/* Background grid pattern */}
-      <div
-        className="absolute inset-0 bg-grid-pattern bg-grid opacity-40"
-        aria-hidden="true"
-      ></div>
-
-      {/* Scan line effect */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-electric-blue/0 via-electric-blue/5 to-electric-blue/0 animate-scan pointer-events-none motion-reduce:animate-none"
-        aria-hidden="true"
-      ></div>
-    </div>
+    </MotionConfig>
   );
 };
 

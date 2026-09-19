@@ -159,7 +159,7 @@ const Academic = () => {
                       href={academicData.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ml-2 text-electric-blue hover:text-neon-purple transition-colors"
+                      className="ml-2 inline-grid place-items-center w-6 h-6 shrink-0 rounded text-electric-blue hover:text-neon-purple transition-colors"
                       aria-label={`Visit ${academicData.institution} website`}
                     >
                       <FontAwesomeIcon icon={faExternalLinkAlt} />

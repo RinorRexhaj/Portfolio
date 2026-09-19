@@ -62,9 +62,9 @@ const Projects = () => {
       </h2>
 
       {/* Main Project Display */}
-      <div className="relative mb-8">
+      <div className="relative mb-8" aria-live="polite">
         <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
+          <motion.article
             key={currentIndex}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -74,14 +74,16 @@ const Projects = () => {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
             className="group relative bg-deep-space/50 backdrop-blur-sm border border-electric-blue/30 rounded-lg p-8 transition-all duration-300 hover:shadow-holographic-hover"
-            role="article"
-            aria-label={`Project: ${projects[currentIndex].title}`}
+            aria-labelledby="current-project-title"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="relative z-10">
               <div className="flex items-center gap-6 mb-4">
-                <h3 className="font-orbitron text-3xl md:text-2xl text-electric-blue">
+                <h3
+                  id="current-project-title"
+                  className="font-orbitron text-3xl md:text-2xl text-electric-blue"
+                >
                   {projects[currentIndex].title}
                 </h3>
                 {projects[currentIndex].url && (
@@ -109,7 +111,7 @@ const Projects = () => {
                 <DisplaySkeleton />
               )}
             </div>
-          </motion.div>
+          </motion.article>
         </AnimatePresence>
 
         {/* Navigation Buttons */}
@@ -130,26 +132,30 @@ const Projects = () => {
       </div>
 
       {/* Project Navigation */}
-      <div
-        className="flex justify-center gap-4"
-        role="tablist"
-        aria-label="Project navigation"
+      <ul
+        className="flex justify-center gap-4 list-none"
+        aria-label="Choose a project"
       >
         {projects.map((project, index) => (
-          <button
-            key={project.title}
-            onClick={() => selectProjectIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-electric-blue scale-125"
-                : "bg-electric-blue/30 hover:bg-electric-blue/50"
-            }`}
-            role="tab"
-            aria-selected={index === currentIndex}
-            aria-label={`Go to project ${index + 1}: ${project.title}`}
-          />
+          <li key={project.title}>
+            <button
+              type="button"
+              onClick={() => selectProjectIndex(index)}
+              className="group grid place-items-center w-6 h-6 rounded-full"
+              aria-current={index === currentIndex}
+              aria-label={`Show project ${index + 1}: ${project.title}`}
+            >
+              <span
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-electric-blue scale-125"
+                    : "bg-electric-blue/30 group-hover:bg-electric-blue/50"
+                }`}
+              />
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
