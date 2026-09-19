@@ -11,6 +11,11 @@ import type { ExperienceRole } from "../types/Experience";
  * Lines marked TODO are facts only you know (exact stack, which portfolio
  * project came out of which role). They are left blank rather than guessed.
  *
+ * This is a public page for a security vendor. Highlights name public
+ * integrations and general architecture only — no internal product names, and
+ * nothing describing a past credential-handling or auth weakness. Keep it that
+ * way, and clear anything more specific with your lead first.
+ *
  * Roles render newest-first automatically; `start`/`end` drive the ordering,
  * the <time> elements and the duration label, so keep them as ISO year-months.
  * ------------------------------------------------------------------------- */
@@ -28,17 +33,29 @@ export const experience: ExperienceRole[] = [
     start: "2025-08",
     end: null,
     summary:
-      "Build AI/ML and backend features for a multi-tenant SaaS security platform, " +
-      "owning the path from data preparation through model deployment to production monitoring.",
+      "Own the ML training and serving pipeline behind the platform's alert classification " +
+      "— its core differentiator — and build multi-tenant features across FastAPI and Vue " +
+      "for managed security providers running Microsoft Sentinel.",
     highlights: [
-      "Took [N] ML workflows from data preparation to production on MLflow and Azure Databricks, standardising validation and cutting model-iteration time from [X] to [Y].",
-      "Built backend features across a multi-tenant architecture serving [N] tenants, holding p95 latency at [X]ms while enforcing per-tenant data isolation.",
-      "Shipped [N] security detections into the platform, reducing analyst triage time by [X]%.",
-      "Delivered customer service contracts end to end — performance monitoring, client support and compliance documentation — across [N] enterprise accounts.",
+      "Own the per-tenant model training pipeline on Azure Databricks — MLflow tracking and registry, parallel training with reproducible seeding, and quality gates that block promotion of models trained on insufficient labels. [N] tenant models in production.",
+      "Cut scoring latency from [X]ms to [Y]ms by designing the model-serving cache — tenant, generic and pinned models with freshness checks and eviction — so requests resolve from memory instead of reloading per call.",
+      "Took the heaviest read paths from [X] to [Y]: batched CTI/OSINT label lookups with bounded external calls, and rewrote alert-listing queries to paginate and count on indexed IDs.",
+      "Generalised a single Jira integration into a pluggable ITSM adapter layer, then shipped Autotask and Xurrent on it — [N] days to add an integration, down from [X].",
     ],
-    // TODO(rinor): MLflow / Azure Databricks / Python are the only entries the
-    // previous copy actually supported. Add the rest of what you use daily.
-    stack: ["Python", "MLflow", "Azure Databricks"],
+    stack: [
+      "Python",
+      "FastAPI",
+      "Celery",
+      "SQLAlchemy",
+      "Vue 3",
+      "TypeScript",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Azure Databricks",
+      "MLflow",
+      "Microsoft Sentinel",
+    ],
     // TODO(rinor): add project titles from src/utils/Projects.ts that came out
     // of this role, e.g. relatedProjects: ["DocuForge"]. Left blank on purpose —
     // attributing a project to the wrong employer is a factual claim.
@@ -63,7 +80,9 @@ export const experience: ExperienceRole[] = [
       "Delivered [N] releases across [N] agile sprints, running task prioritisation and stakeholder communication.",
       "Mentored [N] developers, cutting review cycles per pull request from [X] to [Y].",
     ],
-    // TODO(rinor): confirm — the previous copy named no framework for this role.
+    // TODO(rinor): still a guess. The previous copy named no framework for this
+    // role, and your Seculyze work turns out to be Vue 3 — so "React" here has
+    // no source behind it. Replace with what you actually used at Elba.
     stack: ["React", "TypeScript"],
   },
 ];
