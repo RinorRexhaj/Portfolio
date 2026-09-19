@@ -8,18 +8,37 @@ import Academic from "./components/Academic";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import { MotionConfig } from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 
-/** Hard ceiling on the intro overlay. Content is never gated on it. */
-const LOADER_MAX_MS = 900;
+/** How long the intro overlay stays up on a visitor's first load. */
+const LOADER_MS = 1000;
+const INTRO_SEEN_KEY = "intro-seen";
+
+/** sessionStorage throws in some privacy modes; a miss just replays the intro. */
+const introAlreadySeen = () => {
+  try {
+    return sessionStorage.getItem(INTRO_SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const markIntroSeen = () => {
+  try {
+    sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+  } catch {
+    /* no-op */
+  }
+};
 
 const App = () => {
-  // The overlay starts hidden when the tab is already backgrounded: timers are
-  // throttled there, so anything waiting on one would leave a blank page.
-  const [isLoading, setIsLoading] = useState(
-    () => typeof document === "undefined" || !document.hidden,
-  );
+  // Shown once per session, and never when the tab starts backgrounded: timers
+  // are throttled there, so anything waiting on one would sit over a blank page.
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof document === "undefined" || document.hidden) return false;
+    return !introAlreadySeen();
+  });
 
   useEffect(() => {
     if (!isLoading) return;
@@ -28,16 +47,18 @@ const App = () => {
     const dismiss = () => {
       if (done) return;
       done = true;
+      markIntroSeen();
       setIsLoading(false);
     };
 
-    // Whichever comes first: fonts settled, the cap, or the tab losing focus.
-    const cap = window.setTimeout(dismiss, LOADER_MAX_MS);
-    document.fonts?.ready.then(dismiss).catch(dismiss);
+    // The overlay is cosmetic: content is already rendered underneath, so this
+    // timer only decides how long it stays covered. Losing focus dismisses it
+    // immediately rather than letting a throttled timer strand the overlay.
+    const timer = window.setTimeout(dismiss, LOADER_MS);
     document.addEventListener("visibilitychange", dismiss);
 
     return () => {
-      window.clearTimeout(cap);
+      window.clearTimeout(timer);
       document.removeEventListener("visibilitychange", dismiss);
     };
     // Runs once: isLoading only ever goes true -> false.
@@ -76,7 +97,9 @@ const App = () => {
         <Analytics />
 
         {/* Intro overlay. Purely on top of the content, never in place of it. */}
-        {isLoading && <LoadingAnimation />}
+        <AnimatePresence>
+        {isLoading && <LoadingAnimation key="intro" />}
+      </AnimatePresence>
 
         <Navbar />
 

@@ -1,5 +1,6 @@
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const GEARS = [
@@ -22,7 +23,7 @@ const LoadingAnimation = () => {
           clearInterval(interval);
           return 100;
         }
-        return prev + 4;
+        return prev + 2;
       });
     }, 20);
 
@@ -30,7 +31,10 @@ const LoadingAnimation = () => {
   }, []);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className="fixed inset-0 bg-deep-space z-50 flex items-center justify-center"
       role="status"
       aria-label="Loading portfolio"
@@ -98,7 +102,7 @@ const LoadingAnimation = () => {
           style={{ width: `${progress}%` }}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
