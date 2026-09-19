@@ -33,14 +33,15 @@ export const experience: ExperienceRole[] = [
     start: "2025-08",
     end: null,
     summary:
-      "Own the ML training and serving pipeline behind the platform's alert classification " +
-      "— its core differentiator — and build multi-tenant features across FastAPI and Vue " +
-      "for managed security providers running Microsoft Sentinel.",
+      "Built the ML training pipeline behind the platform's alert classification," +
+      " and built the threat-intel, cost and notification systems around it, " +
+      "for security teams running Microsoft Sentinel.",
     highlights: [
-      "Own the per-tenant model training pipeline on Azure Databricks — MLflow tracking and registry, parallel training with reproducible seeding, and quality gates that block promotion of models trained on insufficient labels. [N] tenant models in production.",
-      "Cut scoring latency from [X]ms to [Y]ms by designing the model-serving cache — tenant, generic and pinned models with freshness checks and eviction — so requests resolve from memory instead of reloading per call.",
-      "Took the heaviest read paths from [X] to [Y]: batched CTI/OSINT label lookups with bounded external calls, and rewrote alert-listing queries to paginate and count on indexed IDs.",
-      "Generalised a single Jira integration into a pluggable ITSM adapter layer, then shipped Autotask and Xurrent on it — [N] days to add an integration, down from [X].",
+      "Automated the per-tenant model training pipeline on Azure Databricks — MLflow tracking and registry, parallel training with reproducible seeding, and quality gates that block promotion of models trained on insufficient labels.",
+      "Extended threat-intel lookup from IP-only to URLs and file hashes, adding five providers (CIRCL, Hybrid Analysis, MalwareBazaar, PhishTank, URLHaus) behind one interface with per-source scoring into OpenCTI.",
+      "Fixed a multi-day memory leak in the enrichment service — four nested levels of per-call thread pools multiplying to a ~960-thread ceiling — with two shared bounded pools, explicit deadlines, and a circuit breaker on OpenCTI writes.",
+      "Built Sentinel ingestion budgeting — per-log-source and overall budgets with projected cost and threshold alerting, from the underlying logic to the UI.",
+      "Centralized notification delivery into one service with a pluggable adapter model — SMS, email and ITSM across five providers (Twilio, Intercom, Jira, Autotask, Xurrent).",
     ],
     stack: [
       "Python",
@@ -72,22 +73,21 @@ export const experience: ExperienceRole[] = [
     start: "2024-08",
     end: "2025-05",
     summary:
-      "Led front-end for a cross-functional team building an AI-powered web product, " +
-      "from component architecture through launch.",
+      "Led front-end for a cross-functional team building an AI-powered web product.",
     highlights: [
-      "Led front-end architecture for an AI product, building a reusable component system that took feature delivery from [X] to [Y] days.",
+      "Led front-end architecture for an AI product, building a reusable component system.",
       "Built the interfaces that surface real-time model output, working directly with the AI/ML team on the inference contract.",
-      "Delivered [N] releases across [N] agile sprints, running task prioritisation and stakeholder communication.",
-      "Mentored [N] developers, cutting review cycles per pull request from [X] to [Y].",
+      "Delivered on-time releases across agile sprints, running task prioritisation and stakeholder communication.",
+      "Fixed bugs and improved sections of the platforms on the projects I was involved in.",
     ],
     // TODO(rinor): still a guess. The previous copy named no framework for this
     // role, and your Seculyze work turns out to be Vue 3 — so "React" here has
     // no source behind it. Replace with what you actually used at Elba.
-    stack: ["React", "TypeScript"],
+    stack: ["Angular", "TypeScript", "Node.js", "Docker"],
   },
 ];
 
 /** Newest first. Sorting here keeps the component free of ordering logic. */
 export const experienceByRecency = [...experience].sort((a, b) =>
-  b.start.localeCompare(a.start)
+  b.start.localeCompare(a.start),
 );

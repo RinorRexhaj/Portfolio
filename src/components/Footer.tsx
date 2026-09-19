@@ -7,19 +7,19 @@ const socials = [
     name: "GitHub",
     icon: faGithub,
     url: "https://github.com/RinorRexhaj/",
-    label: "Rinor Rexhaj on GitHub",
+    label: "GitHub",
   },
   {
     name: "LinkedIn",
     icon: faLinkedinIn,
     url: "https://www.linkedin.com/in/rinor-rexhaj-4484181a8/",
-    label: "Rinor Rexhaj on LinkedIn",
+    label: "LinkedIn",
   },
   {
     name: "Email",
     icon: faEnvelope,
     url: "mailto:rinorrexhaj10@gmail.com",
-    label: "Email Rinor Rexhaj",
+    label: "Email",
   },
 ];
 
@@ -30,21 +30,25 @@ const Footer = () => (
         © {new Date().getFullYear()} Rinor Rexhaj
       </p>
 
-      <ul className="flex list-none items-center gap-5">
-        {socials.map((social) => (
-          <li key={social.name}>
-            <a
-              href={social.url}
-              target={social.url.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-electric-blue/30 text-electric-blue transition-colors hover:bg-electric-blue/20 hover:text-neon-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue"
-            >
-              <FontAwesomeIcon icon={social.icon} aria-hidden="true" />
-            </a>
-          </li>
-        ))}
-      </ul>
+      {/* Labelled so a screen-reader user landing here knows this is the
+          footer strip, not a repeat of the Contact section above it. */}
+      <nav aria-label="Social links">
+        <ul className="flex list-none items-center gap-5">
+          {socials.map((social) => (
+            <li key={social.name}>
+              <a
+                href={social.url}
+                target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-electric-blue/30 text-electric-blue transition-colors hover:bg-electric-blue/20 hover:text-neon-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue"
+              >
+                <FontAwesomeIcon icon={social.icon} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   </footer>
 );
