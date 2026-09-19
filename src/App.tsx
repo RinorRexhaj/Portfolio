@@ -6,7 +6,6 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Academic from "./components/Academic";
 import LoadingAnimation from "./components/LoadingAnimation";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { AnimatePresence, MotionConfig } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
@@ -98,8 +97,8 @@ const App = () => {
 
         {/* Intro overlay. Purely on top of the content, never in place of it. */}
         <AnimatePresence>
-        {isLoading && <LoadingAnimation key="intro" />}
-      </AnimatePresence>
+          {isLoading && <LoadingAnimation key="intro" />}
+        </AnimatePresence>
 
         <Navbar />
 
@@ -113,7 +112,6 @@ const App = () => {
               <Academic />
               <Projects />
               <Skills />
-              <Contact />
             </div>
           </main>
           <Footer />

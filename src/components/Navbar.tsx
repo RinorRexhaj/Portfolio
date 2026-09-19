@@ -22,8 +22,12 @@ const linkClasses = (isActive: boolean) =>
   }`;
 
 const Navbar: React.FC = () => {
-  const [activeLink, setActiveLink] = useState<string>("About");
+  const [observedLink, setObservedLink] = useState<string>("About");
+  // The footer is short and sits at the page bottom, so it can never reach the
+  // observer's band. Bottom-of-page wins instead of racing the observer.
+  const [atBottom, setAtBottom] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const activeLink = atBottom ? links[links.length - 1] : observedLink;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -52,7 +56,7 @@ const Navbar: React.FC = () => {
           )[0];
         if (!visible) return;
         const id = visible.target.id;
-        setActiveLink(id.charAt(0).toUpperCase() + id.slice(1));
+        setObservedLink(id.charAt(0).toUpperCase() + id.slice(1));
       },
       { rootMargin: "-20% 0px -70% 0px" }
     );
@@ -62,10 +66,18 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 100);
+      const doc = document.documentElement;
+      setAtBottom(window.scrollY + window.innerHeight >= doc.scrollHeight - 4);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   // E13: Escape closes the menu and returns focus to the control that opened it.

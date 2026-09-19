@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 
+const EMAIL = "rinorrexhaj10@gmail.com";
+
 const socials = [
   {
     name: "GitHub",
@@ -18,20 +20,34 @@ const socials = [
   {
     name: "Email",
     icon: faEnvelope,
-    url: "mailto:rinorrexhaj10@gmail.com",
+    url: `mailto:${EMAIL}`,
     label: "Email",
   },
 ];
 
+/*
+ * This is where the navbar's "Contact" link lands, so it carries the address
+ * as selectable text rather than only a mailto icon.
+ */
 const Footer = () => (
-  <footer className="relative z-10 border-t border-electric-blue/20 bg-deep-space/60 backdrop-blur-sm">
-    <div className="mx-auto flex w-11/12 max-w-7xl flex-wrap items-center justify-between gap-4 py-8 md:justify-center md:text-center">
-      <p className="font-spaceGrotesk text-sm text-text-secondary/70">
-        © {new Date().getFullYear()} Rinor Rexhaj
-      </p>
+  <footer
+    id="contact"
+    className="relative z-10 border-t border-electric-blue/20 bg-deep-space/60 backdrop-blur-sm"
+    aria-label="Contact and site footer"
+  >
+    <div className="mx-auto flex w-11/12 max-w-7xl flex-wrap items-center justify-between gap-6 py-10 md:justify-center md:text-center">
+      <div className="space-y-1 md:space-y-2">
+        <a
+          href={`mailto:${EMAIL}`}
+          className="font-spaceGrotesk text-lg text-electric-blue underline decoration-electric-blue/40 underline-offset-4 transition-colors hover:text-neon-purple break-all"
+        >
+          {EMAIL}
+        </a>
+        <p className="font-spaceGrotesk text-sm text-text-secondary/70">
+          © {new Date().getFullYear()} Rinor Rexhaj
+        </p>
+      </div>
 
-      {/* Labelled so a screen-reader user landing here knows this is the
-          footer strip, not a repeat of the Contact section above it. */}
       <nav aria-label="Social links">
         <ul className="flex list-none items-center gap-5">
           {socials.map((social) => (
