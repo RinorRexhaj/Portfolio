@@ -33,18 +33,21 @@ export const experience: ExperienceRole[] = [
     start: "2025-08",
     end: null,
     summary:
-      "Built the ML training pipeline behind the platform's alert classification," +
-      " and built the threat-intel, cost and notification systems around it, " +
-      "for security teams running Microsoft Sentinel.",
+      "Built the automated multi-tenant ML training pipeline behind the " +
+      "platform's Sentinel alert classification, and the full-stack and " +
+      "security features around it, for security teams running Microsoft " +
+      "Sentinel.",
     highlights: [
-      "Automated the per-tenant model training pipeline on Azure Databricks — MLflow tracking and registry, parallel training with reproducible seeding, and quality gates that block promotion of models trained on insufficient labels.",
-      "Extended threat-intel lookup from IP-only to URLs and file hashes, adding five providers behind one interface with per-source scoring into OpenCTI.",
-      "Fixed a multi-day memory leak in the enrichment service — four nested levels of per-call thread pools multiplying to a ~960-thread ceiling — with two shared bounded pools, explicit deadlines, and a circuit breaker on OpenCTI writes.",
-      "Built Sentinel ingestion budgeting — per-log-source and overall budgets with projected cost and threshold alerting, from the underlying logic to the UI.",
-      "Centralized notification delivery into one service with a pluggable adapter model — SMS, email and ITSM across five providers.",
+      "Built an automated multi-tenant ML training pipeline for a PyTorch true/false-positive classifier of Sentinel alerts: data collection, Azure Databricks training, MLflow registry, deployment of promoted models with hot-swap FastAPI serving, and model and data drift monitoring.",
+      "Reworked the ML training components — a recall-first scoring function, grid search and the champion/challenger gate, a holdout carved before oversampling, and evaluation that counts abstained predictions.",
+      "Built and maintained front-end, back-end and cyber security features for the Seculyze SaaS platform across a multi-tenant architecture, with scalability, security and performance in mind.",
+      "Conducted code reviews, debugging and issue resolution across environments.",
+      "Integrated third-party APIs and assisted with deployment, monitoring and optimisation.",
+      "Documented technical specs and processes, contributing to workflow improvements.",
     ],
     stack: [
       "Python",
+      "PyTorch",
       "FastAPI",
       "Celery",
       "TypeScript",
