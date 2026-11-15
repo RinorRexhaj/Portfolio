@@ -1,12 +1,15 @@
 import type { ExperienceRole } from "../types/Experience";
 
 /* ---------------------------------------------------------------------------
- * ⚠️  UNFILLED CONTENT — DO NOT DEPLOY AS-IS
+ * Career history. Figures here are claims you will be asked to defend in an
+ * interview, so a bullet with no figure beats a bullet with an invented one.
  *
- * Every [N] / [X] / [Y] below is a placeholder for a real figure. They are
- * deliberately loud so they cannot ship by accident. Replace each one with a
- * number you can defend in an interview, or delete the clause entirely — a
- * bullet with no figure still beats a bullet with an invented one.
+ * The first two Seculyze highlights mirror the ML bullets on Rinor's CV — if
+ * one changes, change the other, or the page and the document a recruiter
+ * reads next stop agreeing. The four below them are page-only, and the CV's
+ * remaining bullets (code reviews, third-party APIs, documentation) are
+ * CV-only on purpose: they scan well for an ATS and dilute a page that a
+ * reader already chose to open.
  *
  * Lines marked TODO are facts only you know (exact stack, which portfolio
  * project came out of which role). They are left blank rather than guessed.
@@ -34,16 +37,16 @@ export const experience: ExperienceRole[] = [
     end: null,
     summary:
       "Built the automated multi-tenant ML training pipeline behind the " +
-      "platform's Sentinel alert classification, and the full-stack and " +
-      "security features around it, for security teams running Microsoft " +
+      "platform's alert classification, and the threat-intel, cost and " +
+      "notification systems around it, for security teams running Microsoft " +
       "Sentinel.",
     highlights: [
       "Built an automated multi-tenant ML training pipeline for a PyTorch true/false-positive classifier of Sentinel alerts: data collection, Azure Databricks training, MLflow registry, deployment of promoted models with hot-swap FastAPI serving, and model and data drift monitoring.",
       "Reworked the ML training components — a recall-first scoring function, grid search and the champion/challenger gate, a holdout carved before oversampling, and evaluation that counts abstained predictions.",
-      "Built and maintained front-end, back-end and cyber security features for the Seculyze SaaS platform across a multi-tenant architecture, with scalability, security and performance in mind.",
-      "Conducted code reviews, debugging and issue resolution across environments.",
-      "Integrated third-party APIs and assisted with deployment, monitoring and optimisation.",
-      "Documented technical specs and processes, contributing to workflow improvements.",
+      "Fixed a multi-day memory leak in the enrichment service — four nested levels of per-call thread pools multiplying to a ~960-thread ceiling — with two shared bounded pools, explicit deadlines, and a circuit breaker on OpenCTI writes.",
+      "Built Sentinel ingestion budgeting — per-log-source and overall budgets with projected cost and threshold alerting, from the underlying logic to the UI.",
+      "Extended threat-intel lookup from IP-only to URLs and file hashes, adding five providers behind one interface with per-source scoring into OpenCTI.",
+      "Centralized notification delivery into one service with a pluggable adapter model — SMS, email and ITSM across five providers.",
     ],
     stack: [
       "Python",
