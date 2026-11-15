@@ -74,12 +74,11 @@ export const experience: ExperienceRole[] = [
     start: "2024-08",
     end: "2025-05",
     summary:
-      "Led front-end for a cross-functional team building an AI-powered web product.",
+      "Led front-end for a cross-functional team building an automated AI " +
+      "ticket system.",
     highlights: [
-      "Led front-end architecture for an AI product, building a reusable component system.",
-      "Built the interfaces that surface real-time model output, working directly with the AI/ML team on the inference contract.",
-      "Delivered on-time releases across agile sprints, running task prioritisation and stakeholder communication.",
-      "Fixed bugs and improved sections of the platforms on the projects I was involved in.",
+      "Built the interfaces that surface AI analysis as it runs, over event streaming, working directly with the AI/ML team on the inference contract.",
+      "Built a reusable component system covering the product's core surfaces — ticket lists and detail views, and running and reviewing AI analysis on a ticket.",
     ],
     // TODO(rinor): still a guess. The previous copy named no framework for this
     // role, and your Seculyze work turns out to be Vue 3 — so "React" here has
